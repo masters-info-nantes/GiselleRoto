@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">GiselleRoto</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
     <string name="title_section1">Film en fond</string>
     <string name="title_section2">Pelures d\'oignons</string>
     <string name="title_section3">Nouveau depuis galerie</string>
@@ -13,11 +17,18 @@
     <string name="title_section9">Fermer projet</string>
     <string name="header_section1">Calques</string>
     <string name="header_section2">Projet</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="dialog_peelings_title">Nombre de pelures</string>
     <string name="dialog_default_positive">Valider</string>
     <string name="dialog_default_negative">Annuler</string>
     <string name="dialog_peelings_text">Pelures: 3</string>
+
+    <string name="text_button_new_gallery">Nouveau depuis la galerie</string>
+    <string name="text_button_new_camera">Nouveau depuis caméra</string>
+    <string name="text_button_open">Ouvrir un projet</string>
+    <string name="about">Développé par Anthony Pena et Jérémy Bardon</string>
+
+    <string name="menu_back">Image précédente</string>
+    <string name="menu_next">Image suivante</string>
+    <string name="menu_palette">Palette</string>
 
 </resources>

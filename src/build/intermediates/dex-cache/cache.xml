@@ -2,32 +2,53 @@
 <items version="2" >
 
     <item
-        jar="/Volumes/Data/Projets/GiselleRoto/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
+        jar="/Volumes/Data/Projets/Rotoscopie/GiselleRoto/src/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
         jumboMode="false"
-        revision="20.0.0"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
-        <dex dex="/Volumes/Data/Projets/GiselleRoto/app/build/intermediates/pre-dexed/debug/classes-ba823e3185e3038b9bd8f6bc7b3bc9fdff572119.jar" />
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Volumes/Data/Projets/Rotoscopie/GiselleRoto/src/app/build/intermediates/pre-dexed/debug/classes-9a74ab8ead8b9b2e64f6c2f491d76b08e930f235.jar" />
     </item>
     <item
-        jar="/Users/jeremy/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
+        jar="/Volumes/Data/Projets/Rotoscopie/TestDrawer/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
         jumboMode="false"
-        revision="20.0.0"
-        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
-        <dex dex="/Volumes/Data/Projets/GiselleRoto/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-d2283b0c168ba88985c1a8e1ac977a462065741b.jar" />
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Volumes/Data/Projets/Rotoscopie/TestDrawer/app/build/intermediates/pre-dexed/debug/classes-476ee847e518d7f165235d23cd2edbde6ff05b30.jar" />
     </item>
     <item
-        jar="/Volumes/Data/Projets/GiselleRoto/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
+        jar="/Volumes/Data/Projets/Rotoscopie/GiselleRoto/src/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
         jumboMode="false"
-        revision="20.0.0"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
-        <dex dex="/Volumes/Data/Projets/GiselleRoto/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-26f62317d3b4f1d2d47fbead9027932dffaff52e.jar" />
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Volumes/Data/Projets/Rotoscopie/GiselleRoto/src/app/build/intermediates/pre-dexed/debug/classes-c02bf7e8f2871a1b5ae0be4c49804ab6e3b9d939.jar" />
     </item>
     <item
-        jar="/Volumes/Data/Projets/GiselleRoto/app/build/intermediates/exploded-aar/com.getbase/floatingactionbutton/1.8.0/classes.jar"
+        jar="/Users/jeremy/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
         jumboMode="false"
-        revision="20.0.0"
-        sha1="7a055a4323187e6f6a5e63f01b5a59bff71869a5">
-        <dex dex="/Volumes/Data/Projets/GiselleRoto/app/build/intermediates/pre-dexed/debug/classes-b490963a558c5e185ed9c23fa036d500859ac6f6.jar" />
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Volumes/Data/Projets/Rotoscopie/TestDrawer/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-feb4471f312f5831072e829d7ea2fe76b8084f68.jar" />
+    </item>
+    <item
+        jar="/Volumes/Data/Projets/Rotoscopie/GiselleRoto/src/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Volumes/Data/Projets/Rotoscopie/GiselleRoto/src/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-66544d3c958ef7cdefb103d8425b1705af2fc836.jar" />
+    </item>
+    <item
+        jar="/Volumes/Data/Projets/Rotoscopie/TestDrawer/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Volumes/Data/Projets/Rotoscopie/TestDrawer/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-24ddb3b6e784df95e0e04ea49fd0ad120ddcb16a.jar" />
+    </item>
+    <item
+        jar="/Volumes/Data/Projets/Rotoscopie/TestDrawer/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Volumes/Data/Projets/Rotoscopie/TestDrawer/app/build/intermediates/pre-dexed/debug/classes-dcd9a8df5c57807541dbc2db581ae6e1d958eaa7.jar" />
     </item>
 
 </items>
