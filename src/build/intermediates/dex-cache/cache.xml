@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Volumes/Data/Projets/GiselleRoto/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
+        <dex dex="/Volumes/Data/Projets/GiselleRoto/app/build/intermediates/pre-dexed/debug/classes-ba823e3185e3038b9bd8f6bc7b3bc9fdff572119.jar" />
+    </item>
+    <item
+        jar="/Users/jeremy/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
+        <dex dex="/Volumes/Data/Projets/GiselleRoto/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-d2283b0c168ba88985c1a8e1ac977a462065741b.jar" />
+    </item>
+    <item
+        jar="/Volumes/Data/Projets/GiselleRoto/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
+        <dex dex="/Volumes/Data/Projets/GiselleRoto/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-26f62317d3b4f1d2d47fbead9027932dffaff52e.jar" />
+    </item>
+    <item
+        jar="/Volumes/Data/Projets/GiselleRoto/app/build/intermediates/exploded-aar/com.getbase/floatingactionbutton/1.8.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="7a055a4323187e6f6a5e63f01b5a59bff71869a5">
+        <dex dex="/Volumes/Data/Projets/GiselleRoto/app/build/intermediates/pre-dexed/debug/classes-b490963a558c5e185ed9c23fa036d500859ac6f6.jar" />
+    </item>
+
+</items>

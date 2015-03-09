@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GiselleRoto</string>
+    <string name="title_section1">Film en fond</string>
+    <string name="title_section2">Pelures d\'oignons</string>
+    <string name="title_section3">Nouveau depuis galerie</string>
+    <string name="title_section4">Nouveau depuis caméra</string>
+    <string name="title_section5">Ouvrir un projet</string>
+    <string name="title_section6">Enregistrer</string>
+    <string name="title_section7">Enregistrer sous</string>
+    <string name="title_section8">Partager</string>
+    <string name="title_section9">Fermer projet</string>
+    <string name="header_section1">Calques</string>
+    <string name="header_section2">Projet</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="dialog_peelings_title">Nombre de pelures</string>
+    <string name="dialog_default_positive">Valider</string>
+    <string name="dialog_default_negative">Annuler</string>
+    <string name="dialog_peelings_text">Pelures: 3</string>
+
+</resources>

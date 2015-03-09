@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity" >
+    <item android:id="@+id/action_back"
+        android:title=""
+        android:icon="@drawable/ic_action_menu_back"
+        android:showAsAction="withText|ifRoom" />
+
+    <item android:id="@+id/action_palette"
+        android:title=""
+        android:icon="@drawable/ic_action_menu_palette"
+        android:showAsAction="withText|ifRoom" />
+
+    <item android:id="@+id/action_next"
+        android:title=""
+        android:icon="@drawable/ic_action_menu_next"
+        android:showAsAction="withText|ifRoom" />
+</menu>
