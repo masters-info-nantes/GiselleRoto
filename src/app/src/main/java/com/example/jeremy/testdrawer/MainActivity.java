@@ -138,8 +138,10 @@ public class MainActivity extends ActionBarActivity {
 
         // Handle other action bar items...
         switch (item.getItemId()) {
-            case R.id.action_back:
-                return true;
+            case R.id.action_palette:
+                DrawConfigDialog dialog = new DrawConfigDialog(getLayoutInflater());
+                dialog.show(getFragmentManager(), getString(R.string.dialog_peelings_title));
+            break;
         }
 
         return super.onOptionsItemSelected(item);
