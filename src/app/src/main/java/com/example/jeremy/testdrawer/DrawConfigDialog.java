@@ -78,8 +78,12 @@ public class DrawConfigDialog extends DialogFragment implements View.OnClickList
 
         for (Map.Entry<View, Boolean> val : colors.entrySet()) {
             if(!val.getKey().equals(v)){
+                val.setValue(false);
                 val.getKey().setScaleX(0.8f);
                 val.getKey().setScaleY(0.8f);
+            }
+            else {
+                val.setValue(true);
             }
         }
     }
