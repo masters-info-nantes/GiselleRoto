@@ -139,7 +139,7 @@ public class MainActivity extends ActionBarActivity {
         // Handle other action bar items...
         switch (item.getItemId()) {
             case R.id.action_palette:
-                DrawConfigDialog dialog = new DrawConfigDialog(getLayoutInflater());
+                DrawConfigDialog dialog = new DrawConfigDialog();
                 dialog.show(getFragmentManager(), getString(R.string.dialog_peelings_title));
             break;
         }
@@ -150,7 +150,7 @@ public class MainActivity extends ActionBarActivity {
     public void onDrawerItemSelected(int position){
         switch(position){
             case 2:
-                PeelingsCountDialog dialog = new PeelingsCountDialog(getLayoutInflater());
+                PeelingsCountDialog dialog = new PeelingsCountDialog();
                 dialog.show(getFragmentManager(), getString(R.string.dialog_peelings_title));
             break;
         }

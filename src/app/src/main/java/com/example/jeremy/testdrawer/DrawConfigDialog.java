@@ -5,23 +5,20 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.renderscript.Sampler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by jeremy on 15/03/15.
  */
-public class DrawConfigDialog extends DialogFragment {
-    private LayoutInflater inflater;
+public class DrawConfigDialog extends DialogFragment implements View.OnClickListener{
 
-    public DrawConfigDialog(){
-        super();
-    }
-
-    public DrawConfigDialog(LayoutInflater layout){
-        super();
-        this.inflater = layout;
-    }
+    private HashMap<View, Boolean> colors;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -39,10 +36,51 @@ public class DrawConfigDialog extends DialogFragment {
                     }
                 });
 
-        View layout = inflater.inflate(R.layout.dialog_draw, null);
-        builder.setView(layout);
+        // Bind colors
+        this.colors = new HashMap<View, Boolean>();
+        View layout = getActivity().getLayoutInflater().inflate(R.layout.dialog_draw, null);
+        View first = layout.findViewById(R.id.pickerWhite);
+        first.setScaleX(0.98f);
+        first.setScaleY(0.98f);
+        colors.put(first, true);
+
+        colors.put(layout.findViewById(R.id.pickerBlack), false);
+        colors.put(layout.findViewById(R.id.pickerGray), false);
+        colors.put(layout.findViewById(R.id.pickerBlue), false);
+        colors.put(layout.findViewById(R.id.pickerRed), false);
+        colors.put(layout.findViewById(R.id.pickerYellow), false);
+        colors.put(layout.findViewById(R.id.pickerGreen), false);
+        colors.put(layout.findViewById(R.id.pickerOrange), false);
+
+
+        for (Map.Entry<View, Boolean> v : colors.entrySet()) {
+            v.getKey().setOnClickListener(this);
+            if(!v.getKey().equals(first)){
+                v.getKey().setScaleX(0.8f);
+                v.getKey().setScaleY(0.8f);
+            }
+        }
 
         // Create the AlertDialog object and return it
+        builder.setView(layout);
         return builder.create();
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        Boolean active = colors.get(v);
+
+        if(active) return;
+
+        v.setScaleX(0.98f);
+        v.setScaleY(0.98f);
+
+        for (Map.Entry<View, Boolean> val : colors.entrySet()) {
+            if(!val.getKey().equals(v)){
+                val.getKey().setScaleX(0.8f);
+                val.getKey().setScaleY(0.8f);
+            }
+        }
     }
 }
