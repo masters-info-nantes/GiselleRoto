@@ -37,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
         mTitle = getTitle();
 
         // Drawer configuration
-        mDrawerTitle = "Navigation Drawer";
+        //mDrawerTitle = "Navigation Drawer";
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,

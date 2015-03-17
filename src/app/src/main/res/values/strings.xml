@@ -17,6 +17,7 @@
     <string name="title_section9">Fermer projet</string>
     <string name="header_section1">Calques</string>
     <string name="header_section2">Projet</string>
+    <string name="dialog_draw_title">Style</string>
     <string name="dialog_peelings_title">Nombre de pelures</string>
     <string name="dialog_default_positive">Valider</string>
     <string name="dialog_default_negative">Annuler</string>

@@ -22,7 +22,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_marginTop="2dp"
@@ -35,6 +35,7 @@
                 android:layout_weight="1"
                 android:id="@+id/buttonFirst"
                 android:src="@mipmap/ic_drawer_first"
+                android:scaleType="fitXY"
                 />
 
             <ImageButton
@@ -46,6 +47,7 @@
                 android:src="@mipmap/ic_drawer_play"
                 android:layout_marginLeft="14dp"
                 android:layout_marginRight="14dp"
+                android:scaleType="fitXY"
                 />
 
             <ImageButton
@@ -55,7 +57,9 @@
                 android:layout_weight="1"
                 android:id="@+id/buttonLast"
                 android:src="@mipmap/ic_drawer_last"
-                android:gravity="right" />
+                android:gravity="right"
+                android:scaleType="fitXY"
+                />
         </LinearLayout>
 
         <ListView

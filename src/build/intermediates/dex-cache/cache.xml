@@ -23,6 +23,13 @@
         <dex dex="/Volumes/Data/Projets/Rotoscopie/GiselleRoto/src/app/build/intermediates/pre-dexed/debug/classes-c02bf7e8f2871a1b5ae0be4c49804ab6e3b9d939.jar" />
     </item>
     <item
+        jar="/Users/jeremy/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/Volumes/Data/Projets/Rotoscopie/GiselleRoto/src/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-76a21b4a627949b2dff96b498b738e529d4ec714.jar" />
+    </item>
+    <item
         jar="/Users/jeremy/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -35,6 +42,13 @@
         revision="21.1.2"
         sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
         <dex dex="/Volumes/Data/Projets/Rotoscopie/GiselleRoto/src/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-66544d3c958ef7cdefb103d8425b1705af2fc836.jar" />
+    </item>
+    <item
+        jar="/Volumes/Data/Projets/Rotoscopie/GiselleRoto/src/app/build/intermediates/exploded-aar/com.getbase/floatingactionbutton/1.9.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f2b8a750df2a5d485d0c40b379b44371c5e6d98d">
+        <dex dex="/Volumes/Data/Projets/Rotoscopie/GiselleRoto/src/app/build/intermediates/pre-dexed/debug/classes-fbbea0b3fa7ec9be02965b6f1c622f90d139e55d.jar" />
     </item>
     <item
         jar="/Volumes/Data/Projets/Rotoscopie/TestDrawer/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
