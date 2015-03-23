@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -154,5 +155,9 @@ public class MainActivity extends ActionBarActivity {
                 dialog.show(getFragmentManager(), getString(R.string.dialog_peelings_title));
             break;
         }
+    }
+
+    public void openProjectClick(View v) {
+        Log.v("ah","Je suis le Docteur !");
     }
 }
