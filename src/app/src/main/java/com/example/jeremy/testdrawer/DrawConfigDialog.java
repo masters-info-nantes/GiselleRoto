@@ -19,7 +19,7 @@ import java.util.Map;
 public class DrawConfigDialog extends DialogFragment implements View.OnClickListener{
 
     private HashMap<View, Boolean> colors;
-
+	
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
@@ -39,12 +39,12 @@ public class DrawConfigDialog extends DialogFragment implements View.OnClickList
         // Bind colors
         this.colors = new HashMap<View, Boolean>();
         View layout = getActivity().getLayoutInflater().inflate(R.layout.dialog_draw, null);
-        View first = layout.findViewById(R.id.pickerWhite);
+        View first = layout.findViewById(R.id.pickerBlack);
         first.setScaleX(0.98f);
         first.setScaleY(0.98f);
         colors.put(first, true);
 
-        colors.put(layout.findViewById(R.id.pickerBlack), false);
+        colors.put(layout.findViewById(R.id.pickerWhite), false);
         colors.put(layout.findViewById(R.id.pickerGray), false);
         colors.put(layout.findViewById(R.id.pickerBlue), false);
         colors.put(layout.findViewById(R.id.pickerRed), false);
@@ -55,7 +55,7 @@ public class DrawConfigDialog extends DialogFragment implements View.OnClickList
 
         for (Map.Entry<View, Boolean> v : colors.entrySet()) {
             v.getKey().setOnClickListener(this);
-            if(!v.getKey().equals(first)){
+            if(!v.getKey().equals(first)) {
                 v.getKey().setScaleX(0.8f);
                 v.getKey().setScaleY(0.8f);
             }
@@ -87,4 +87,5 @@ public class DrawConfigDialog extends DialogFragment implements View.OnClickList
             }
         }
     }
+    
 }

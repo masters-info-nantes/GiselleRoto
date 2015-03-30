@@ -101,12 +101,12 @@ public class DrawActivity extends ActionBarActivity {
         };
 
         adapter.addSectionHeaderItem(getString(R.string.header_section1));
-        for(String str: layerItems){
+        for(String str: layerItems) {
             adapter.addItem(str);
         }
 
         adapter.addSectionHeaderItem(getString(R.string.header_section2));
-        for(String str: projectItems){
+        for(String str: projectItems) {
             adapter.addItem(str);
         }
 
@@ -177,6 +177,9 @@ public class DrawActivity extends ActionBarActivity {
         switch (item.getItemId()) {
             case R.id.action_palette:
                 DrawConfigDialog dialog = new DrawConfigDialog();
+                Bundle dialogArgs = new Bundle();
+				dialogArgs.putInt("num", 1);
+				dialog.setArguments(dialogArgs);
                 dialog.show(getFragmentManager(), getString(R.string.dialog_peelings_title));
             break;
 

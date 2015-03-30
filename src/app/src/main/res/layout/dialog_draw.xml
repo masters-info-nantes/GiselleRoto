@@ -42,17 +42,17 @@
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:clickable="true"
-                android:id="@+id/pickerWhite"
-                android:src="@drawable/picker_white_circle"
+                android:id="@+id/pickerBlack"
+                android:src="@drawable/picker_black_circle"
                 android:layout_row="0"
                 android:layout_column="0" />
-
-            <ImageView
+			
+			<ImageView
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:clickable="true"
-                android:id="@+id/pickerBlack"
-                android:src="@drawable/picker_black_circle"
+                android:id="@+id/pickerWhite"
+                android:src="@drawable/picker_white_circle"
                 android:layout_row="0"
                 android:layout_column="1" />
 
