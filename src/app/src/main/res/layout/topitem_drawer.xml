@@ -1,39 +1,39 @@
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:layout_marginTop="2dp"
-    android:layout_marginBottom="2dp">
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:layout_gravity="center"
+	android:gravity="center"
+	android:layout_marginTop="2dp"
+	android:layout_marginBottom="2dp">
 
-    <ImageButton
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/buttonFirst"
-        android:src="@mipmap/ic_drawer_first"
-        />
+	<ImageButton
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:id="@+id/buttonFirst"
+		android:src="@mipmap/ic_drawer_first"
+		/>
 
-    <ImageButton
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/buttonPlay"
-        android:src="@mipmap/ic_drawer_play"
-        android:layout_marginLeft="14dp"
-        android:layout_marginRight="14dp"
-        />
+	<ImageButton
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:id="@+id/buttonPlay"
+		android:src="@mipmap/ic_drawer_play"
+		android:layout_marginLeft="14dp"
+		android:layout_marginRight="14dp"
+		/>
 
-    <ImageButton
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/buttonLast"
-        android:src="@mipmap/ic_drawer_last"
-        android:gravity="right" />
+	<ImageButton
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:id="@+id/buttonLast"
+		android:src="@mipmap/ic_drawer_last"
+		android:gravity="right" />
 </LinearLayout>

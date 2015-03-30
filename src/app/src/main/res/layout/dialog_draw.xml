@@ -1,115 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:paddingLeft="15dp"
-    android:paddingRight="15dp"
-    android:layout_marginBottom="20dp"
-    android:layout_height="match_parent">
+	android:orientation="vertical" android:layout_width="match_parent"
+	android:paddingLeft="15dp"
+	android:paddingRight="15dp"
+	android:layout_marginBottom="20dp"
+	android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Taille"
-        android:id="@+id/textView3" />
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:text="Taille"
+		android:id="@+id/textView3" />
 
-    <SeekBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/seekBar2"
-        android:max="99" />
+	<SeekBar
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/seekBar2"
+		android:max="99" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Couleur"
-        android:layout_marginTop="10dp"
-        android:id="@+id/textView4" />
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:text="Couleur"
+		android:layout_marginTop="10dp"
+		android:id="@+id/textView4" />
 
-    <RadioGroup
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.42"
-        android:layout_marginBottom="10dp">
+	<RadioGroup
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_gravity="center_horizontal"
+		android:layout_weight="0.42"
+		android:layout_marginBottom="10dp">
 
-        <GridLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+		<GridLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal">
 
-            <ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:clickable="true"
-                android:id="@+id/pickerBlack"
-                android:src="@drawable/picker_black_circle"
-                android:layout_row="0"
-                android:layout_column="0" />
+			<ImageView
+				android:layout_width="55dp"
+				android:layout_height="55dp"
+				android:clickable="true"
+				android:id="@+id/pickerBlack"
+				android:src="@drawable/picker_black_circle"
+				android:layout_row="0"
+				android:layout_column="0" />
 			
 			<ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:clickable="true"
-                android:id="@+id/pickerWhite"
-                android:src="@drawable/picker_white_circle"
-                android:layout_row="0"
-                android:layout_column="1" />
+				android:layout_width="55dp"
+				android:layout_height="55dp"
+				android:clickable="true"
+				android:id="@+id/pickerWhite"
+				android:src="@drawable/picker_white_circle"
+				android:layout_row="0"
+				android:layout_column="1" />
 
-            <ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:clickable="true"
-                android:id="@+id/pickerGray"
-                android:src="@drawable/picker_gray_circle"
-                android:layout_row="0"
-                android:layout_column="2" />
+			<ImageView
+				android:layout_width="55dp"
+				android:layout_height="55dp"
+				android:clickable="true"
+				android:id="@+id/pickerGray"
+				android:src="@drawable/picker_gray_circle"
+				android:layout_row="0"
+				android:layout_column="2" />
 
-            <ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:clickable="true"
-                android:id="@+id/pickerRed"
-                android:src="@drawable/picker_red_circle"
-                android:layout_row="1"
-                android:layout_column="0" />
+			<ImageView
+				android:layout_width="55dp"
+				android:layout_height="55dp"
+				android:clickable="true"
+				android:id="@+id/pickerRed"
+				android:src="@drawable/picker_red_circle"
+				android:layout_row="1"
+				android:layout_column="0" />
 
-            <ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:clickable="true"
-                android:id="@+id/pickerYellow"
-                android:src="@drawable/picker_yellow_circle"
-                android:layout_row="1"
-                android:layout_column="1" />
+			<ImageView
+				android:layout_width="55dp"
+				android:layout_height="55dp"
+				android:clickable="true"
+				android:id="@+id/pickerYellow"
+				android:src="@drawable/picker_yellow_circle"
+				android:layout_row="1"
+				android:layout_column="1" />
 
-            <ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:clickable="true"
-                android:id="@+id/pickerGreen"
-                android:src="@drawable/picker_green_circle"
-                android:layout_row="1"
-                android:layout_column="2" />
+			<ImageView
+				android:layout_width="55dp"
+				android:layout_height="55dp"
+				android:clickable="true"
+				android:id="@+id/pickerGreen"
+				android:src="@drawable/picker_green_circle"
+				android:layout_row="1"
+				android:layout_column="2" />
 
-            <ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:clickable="true"
-                android:id="@+id/pickerBlue"
-                android:src="@drawable/picker_blue_circle"
-                android:layout_row="0"
-                android:layout_column="3" />
+			<ImageView
+				android:layout_width="55dp"
+				android:layout_height="55dp"
+				android:clickable="true"
+				android:id="@+id/pickerBlue"
+				android:src="@drawable/picker_blue_circle"
+				android:layout_row="0"
+				android:layout_column="3" />
 
-            <ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:clickable="true"
-                android:id="@+id/pickerOrange"
-                android:src="@drawable/picker_orange_circle"
-                android:layout_row="1"
-                android:layout_column="3" />
-        </GridLayout>
-    </RadioGroup>
+			<ImageView
+				android:layout_width="55dp"
+				android:layout_height="55dp"
+				android:clickable="true"
+				android:id="@+id/pickerOrange"
+				android:src="@drawable/picker_orange_circle"
+				android:layout_row="1"
+				android:layout_column="3" />
+		</GridLayout>
+	</RadioGroup>
 </LinearLayout>

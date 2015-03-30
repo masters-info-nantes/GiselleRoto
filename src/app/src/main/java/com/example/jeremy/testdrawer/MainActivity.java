@@ -32,82 +32,88 @@ import java.text.SimpleDateFormat;
 
 public class MainActivity extends ActionBarActivity {
 
-    private static final int REQUEST_VIDEO_CAPTURE = 1;
-    private static final int FPS = 3;
+	private static final int REQUEST_VIDEO_FROM_GALLERY = 1;
+	private static final int REQUEST_VIDEO_CAPTURE = 2;
+	private static final int FPS = 3;
 
-    private CharSequence mTitle;
+	private CharSequence mTitle;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
 
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
-        setSupportActionBar(toolbar);
+		final Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
+		setSupportActionBar(toolbar);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(false);
+		ActionBar actionBar = getSupportActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(false);
 		actionBar.setHomeButtonEnabled(true);
 		actionBar.setLogo(R.mipmap.ic_launcher);
 		
-        mTitle = getTitle();
-    }
+		mTitle = getTitle();
+	}
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-    }
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+	}
 
-    public void openProjectClick(View v) {
-        startActivity(new Intent(this,DrawActivity.class));
-    }
+	public void openProjectClick(View v) {
+		startActivity(new Intent(this,DrawActivity.class));
+	}
 
-    public void openCameraClick(View v) {
-        Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+	public void openGalleryClick(View v) {
+		Intent takeVideoFromGallery = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
+		startActivityForResult(takeVideoFromGallery, REQUEST_VIDEO_FROM_GALLERY); 
+	}
+	
+	public void openCameraClick(View v) {
+		Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
 
-        // TODO : force camera capture in landscape
-        takeVideoIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+		// TODO : force camera capture in landscape
+		takeVideoIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        if (takeVideoIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE);
-        }
-    }
+		if (takeVideoIntent.resolveActivity(getPackageManager()) != null) {
+			startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE);
+		}
+	}
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_VIDEO_CAPTURE && resultCode == RESULT_OK) {
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if((requestCode == REQUEST_VIDEO_CAPTURE || requestCode == REQUEST_VIDEO_FROM_GALLERY) && resultCode == RESULT_OK) {
 
-            Uri videoUri = data.getData();
-            MediaMetadataRetriever player = new MediaMetadataRetriever();
-            player.setDataSource(this, videoUri);
+			Uri videoUri = data.getData();
+			MediaMetadataRetriever player = new MediaMetadataRetriever();
+			player.setDataSource(this, videoUri);
 
-            int duration = Integer.parseInt(player.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
-            duration /= 1000; // ms -> s
+			int duration = Integer.parseInt(player.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
+			duration /= 1000; // ms -> s
 
-            int framegap = 1000 / FPS;
+			int framegap = 1000 / FPS;
 
-            // TODO Remove this dirty debug thing
-            int max = /*duration * FPS*/1;
+			// TODO Remove this dirty debug thing
+			int max = /*duration * FPS*/1;
 
-            for(int i = 0; i < max; i++) {
-                Bitmap videoFrame = player.getFrameAtTime(i * framegap * 1000);
+			for(int i = 0; i < max; i++) {
+				Bitmap videoFrame = player.getFrameAtTime(i * framegap * 1000);
 
-                File dest = new File(getCacheDir(), "image" + i + ".png");
-                try {
-                    FileOutputStream out = new FileOutputStream(dest);
-                    videoFrame.compress(Bitmap.CompressFormat.PNG, 90, out);
-                    out.flush();
-                    out.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+				File dest = new File(getCacheDir(), "image" + i + ".png");
+				try {
+					FileOutputStream out = new FileOutputStream(dest);
+					videoFrame.compress(Bitmap.CompressFormat.PNG, 90, out);
+					out.flush();
+					out.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
-                Log.d("Wait", "Image " + (i+1) + "/" + max);
-            }
+				Log.d("Wait", "Image " + (i+1) + "/" + max);
+			}
 
-            Intent intentDraw = new Intent(this, DrawActivity.class);
-            intentDraw.putExtra("imagesDir", getCacheDir().getAbsolutePath());
-            startActivity(intentDraw);
-        }
-    }
+			Intent intentDraw = new Intent(this, DrawActivity.class);
+			intentDraw.putExtra("imagesDir", getCacheDir().getAbsolutePath());
+			startActivity(intentDraw);
+		}
+	}
 }

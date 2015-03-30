@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <selector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="wrap_content" android:layout_width="wrap_content">
-        <!-- When selected, use grey -->
-        <item android:drawable="@drawable/ic_action_menu_back"
-            android:state_checked="true" />
-        <!-- When not selected, use white-->
-        <item android:drawable="@drawable/ic_action_menu_palette"
-            android:state_checked="false"/>
-    </selector>
+	<selector xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="wrap_content" android:layout_width="wrap_content">
+		<!-- When selected, use grey -->
+		<item android:drawable="@drawable/ic_action_menu_back"
+			android:state_checked="true" />
+		<!-- When not selected, use white-->
+		<item android:drawable="@drawable/ic_action_menu_palette"
+			android:state_checked="false"/>
+	</selector>

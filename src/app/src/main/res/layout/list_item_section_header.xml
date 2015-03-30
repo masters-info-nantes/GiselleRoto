@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textAppearance="?android:attr/textAppearanceSmall"
-    android:text="Small Text"
-    android:textColor="#fff"
-    android:id="@+id/textView"
-    android:paddingLeft="5px"
-    android:paddingTop="0px"
-    android:paddingRight="0px"
-    android:paddingBottom="0px" />
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:textAppearance="?android:attr/textAppearanceSmall"
+	android:text="Small Text"
+	android:textColor="#fff"
+	android:id="@+id/textView"
+	android:paddingLeft="5px"
+	android:paddingTop="0px"
+	android:paddingRight="0px"
+	android:paddingBottom="0px" />
