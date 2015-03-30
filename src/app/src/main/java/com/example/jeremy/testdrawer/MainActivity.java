@@ -1,6 +1,7 @@
 package com.example.jeremy.testdrawer;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
@@ -31,7 +32,9 @@ import java.text.SimpleDateFormat;
 
 public class MainActivity extends ActionBarActivity {
 
-    static final int REQUEST_VIDEO_CAPTURE = 1;
+    private static final int REQUEST_VIDEO_CAPTURE = 1;
+    private static final int FPS = 3;
+
     private CharSequence mTitle;
 
     @Override
@@ -62,6 +65,9 @@ public class MainActivity extends ActionBarActivity {
     public void openCameraClick(View v) {
         Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
 
+        // TODO : force camera capture in landscape
+        takeVideoIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
         if (takeVideoIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE);
         }
@@ -75,27 +81,31 @@ public class MainActivity extends ActionBarActivity {
                     data.getData(), Toast.LENGTH_LONG).show();
 
             Uri videoUri = data.getData();
-            MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever();
-            mediaMetadataRetriever.setDataSource(this, videoUri);
+            MediaMetadataRetriever player = new MediaMetadataRetriever();
+            player.setDataSource(this, videoUri);
 
-            Bitmap videoFrame = mediaMetadataRetriever.getFrameAtTime(1*1000*1000);
+            int duration = Integer.parseInt(player.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
+            duration /= 1000; // ms -> s
 
-            File dest = new File(getCacheDir(), "image.png");
-            try {
-                FileOutputStream out = new FileOutputStream(dest);
-                videoFrame.compress(Bitmap.CompressFormat.PNG, 90, out);
-                out.flush();
-                out.close();
-            } catch (Exception e) {
-                e.printStackTrace();
+            int framegap = 1000 / FPS;
+
+            for(int i = 0; i < duration * FPS; i++) {
+                Bitmap videoFrame = player.getFrameAtTime(i * framegap * 1000);
+
+                File dest = new File(getCacheDir(), "image" + i + ".png");
+                try {
+                    FileOutputStream out = new FileOutputStream(dest);
+                    videoFrame.compress(Bitmap.CompressFormat.PNG, 90, out);
+                    out.flush();
+                    out.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             Intent intentDraw = new Intent(this, DrawActivity.class);
             intentDraw.putExtra("imagesDir", getCacheDir().getAbsolutePath());
             startActivity(intentDraw);
-
-            //ImageView capturedImageView = (ImageView)findViewById(R.id.imageView);
-            //capturedImageView.setImageBitmap(bmFrame);
         }
     }
 }

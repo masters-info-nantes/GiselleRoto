@@ -21,6 +21,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.util.ArrayList;
+
 public class DrawActivity extends ActionBarActivity {
 
     private DrawerLayout mDrawerLayout;
@@ -29,6 +32,9 @@ public class DrawActivity extends ActionBarActivity {
 
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
+
+    private ArrayList<File> images;
+    private int selectedImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +116,31 @@ public class DrawActivity extends ActionBarActivity {
         Intent intent = getIntent();
         String dirPath = intent.getStringExtra("imagesDir");
 
-        Bitmap bitmap = BitmapFactory.decodeFile(dirPath + "/image.png");
+        this.images = new ArrayList<File>();
+
+        File imagesDir = new File(dirPath);
+        if(imagesDir.isDirectory()){
+            for(int i = 0; i < imagesDir.listFiles().length; i++){
+                File curImage = imagesDir.listFiles()[i];
+
+                if(curImage.getAbsolutePath().contains("image")){
+                    this.images.add(curImage);
+                }
+            }
+        }
+
+        this.setSelectedImage(0);
+    }
+
+    private void setSelectedImage(int index) {
+        // checks
+        index = index < 0 ? 0 : index;
+        index = index >= images.size() ? images.size() - 1 : index;
+
+        this.selectedImage = index;
+Log.d("totorr", ""+index);
+        // change image
+        Bitmap bitmap = BitmapFactory.decodeFile(this.images.get(index).getAbsolutePath());
         final ImageView drawZone = (ImageView)findViewById(R.id.imageView);
         drawZone.setImageBitmap(bitmap);
     }
@@ -148,6 +178,14 @@ public class DrawActivity extends ActionBarActivity {
             case R.id.action_palette:
                 DrawConfigDialog dialog = new DrawConfigDialog();
                 dialog.show(getFragmentManager(), getString(R.string.dialog_peelings_title));
+            break;
+
+            case R.id.action_back:
+                this.setSelectedImage(this.selectedImage - 1);
+            break;
+
+            case R.id.action_next:
+                this.setSelectedImage(this.selectedImage + 1);
             break;
         }
 
