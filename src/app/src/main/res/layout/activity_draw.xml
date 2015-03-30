@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context=".MainActivity">
+
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/appbar"/>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/app_bar" >
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            tools:context=".MainActivity$PlaceholderFragment">
+            
+            <view
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				class="com.example.jeremy.testdrawer.CustomView"
+				android:id="@+id/view"
+				android:layout_gravity="center_horizontal|top"
+				android:visibility="visible"
+				android:layout_x="0dp"
+				android:layout_y="0dp"
+				android:background="@android:color/transparent"/>
+
+            <com.getbase.floatingactionbutton.FloatingActionsMenu
+                xmlns:fab="http://schemas.android.com/apk/res-auto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_addButtonColorNormal="@color/white"
+                fab:fab_addButtonColorPressed="@color/white_pressed"
+                fab:fab_addButtonPlusIconColor="@color/half_black"
+                fab:fab_labelStyle="@style/menu_labels_style"
+                fab:fab_addButtonSize="mini"
+                fab:fab_labelsPosition="left"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/floating_menu">
+
+
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    fab:fab_colorNormal="@color/white"
+                    fab:fab_size="mini"
+                    fab:fab_icon="@mipmap/ic_floating_eraser"
+                    fab:fab_colorPressed="@color/white_pressed"/>
+
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    fab:fab_colorNormal="@color/white"
+                    fab:fab_size="mini"
+                    fab:fab_icon="@mipmap/ic_floating_line"
+                    fab:fab_colorPressed="@color/white_pressed"/>
+
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    fab:fab_colorNormal="@color/white"
+                    fab:fab_size="mini"
+                    fab:fab_icon="@mipmap/ic_floating_pen"
+                    fab:fab_colorPressed="@color/white_pressed"/>
+
+            </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+        </RelativeLayout>
+
+        <include layout="@layout/nav_drawer" />
+    </android.support.v4.widget.DrawerLayout>
+
+</RelativeLayout>
