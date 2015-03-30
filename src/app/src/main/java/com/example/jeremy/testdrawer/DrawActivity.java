@@ -1,7 +1,10 @@
 package com.example.jeremy.testdrawer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -14,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -101,6 +105,14 @@ public class DrawActivity extends ActionBarActivity {
         }
 
         mDrawerListView.setAdapter(adapter);
+
+        // Load first image
+        Intent intent = getIntent();
+        String dirPath = intent.getStringExtra("imagesDir");
+
+        Bitmap bitmap = BitmapFactory.decodeFile(dirPath + "/image.png");
+        final ImageView drawZone = (ImageView)findViewById(R.id.imageView);
+        drawZone.setImageBitmap(bitmap);
     }
 
     @Override

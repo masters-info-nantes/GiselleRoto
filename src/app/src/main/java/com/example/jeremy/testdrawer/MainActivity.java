@@ -25,6 +25,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
@@ -61,11 +62,6 @@ public class MainActivity extends ActionBarActivity {
     public void openCameraClick(View v) {
         Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
 
-        Uri fileUri = getOutputMediaFileUri();  // create a file to save the video
-        takeVideoIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);  // set the image file name
-        takeVideoIntent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
-
-
         if (takeVideoIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE);
         }
@@ -78,30 +74,28 @@ public class MainActivity extends ActionBarActivity {
             Toast.makeText(this, "Video saved to:\n" +
                     data.getData(), Toast.LENGTH_LONG).show();
 
-            Log.d("MainActivity", "Video saved to : " + data.getData().toString());
+            Uri videoUri = data.getData();
+            MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever();
+            mediaMetadataRetriever.setDataSource(this, videoUri);
 
+            Bitmap videoFrame = mediaMetadataRetriever.getFrameAtTime(1*1000*1000);
 
-            //~ ImageView capturedImageView = (ImageView)findViewById(R.id.capturedimage);
+            File dest = new File(getCacheDir(), "image.png");
+            try {
+                FileOutputStream out = new FileOutputStream(dest);
+                videoFrame.compress(Bitmap.CompressFormat.PNG, 90, out);
+                out.flush();
+                out.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-            //~ MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever();
-//~ 
-            //~ mediaMetadataRetriever.setDataSource(data.getData().normalizeScheme());
-            //~ Bitmap bmFrame = mediaMetadataRetriever.getFrameAtTime(2*1000*1000); //unit in microsecond
-            //~ capturedImageView.setImageBitmap(bmFrame);
+            Intent intentDraw = new Intent(this, DrawActivity.class);
+            intentDraw.putExtra("imagesDir", getCacheDir().getAbsolutePath());
+            startActivity(intentDraw);
 
-            //Intent intent = new Intent(Intent.ACTION_VIEW, data.getData().normalizeScheme());
-            //startActivity(intent);
+            //ImageView capturedImageView = (ImageView)findViewById(R.id.imageView);
+            //capturedImageView.setImageBitmap(bmFrame);
         }
-    }
-
-    private Uri getOutputMediaFileUri(){
-
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        File mediaFile = new File(
-                getFilesDir().getPath() + File.separator +
-                "VID_"+ timeStamp + ".mp4"
-        );
-
-        return Uri.fromFile(mediaFile);
     }
 }
