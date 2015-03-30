@@ -89,7 +89,7 @@ public class MainActivity extends ActionBarActivity {
 
             int framegap = 1000 / FPS;
 
-            // DEBUG
+            // TODO Remove this dirty debug thing
             int max = /*duration * FPS*/1;
 
             for(int i = 0; i < max; i++) {
@@ -104,6 +104,8 @@ public class MainActivity extends ActionBarActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+                Log.d("Wait", "Image " + (i+1) + "/" + max);
             }
 
             Intent intentDraw = new Intent(this, DrawActivity.class);

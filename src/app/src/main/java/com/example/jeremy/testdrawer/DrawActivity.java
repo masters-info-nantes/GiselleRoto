@@ -194,6 +194,14 @@ public class DrawActivity extends ActionBarActivity {
 
     public void onDrawerItemSelected(int position){
         switch(position){
+            case 1:
+                final ImageView drawZone = (ImageView)findViewById(R.id.imageView);
+                int visib = drawZone.getVisibility();
+
+                if(visib == View.VISIBLE) drawZone.setVisibility(View.INVISIBLE);
+                else drawZone.setVisibility(View.VISIBLE);
+
+                break;
             case 2:
                 PeelingsCountDialog dialog = new PeelingsCountDialog();
                 dialog.show(getFragmentManager(), getString(R.string.dialog_peelings_title));
