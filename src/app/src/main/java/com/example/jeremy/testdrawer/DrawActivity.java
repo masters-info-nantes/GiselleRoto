@@ -25,7 +25,17 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class DrawActivity extends ActionBarActivity {
-
+	
+	private int drawer_item_cpt = 0;
+	private int drawer_header_layers_pos;
+	private int drawer_item_background_movie_pos;
+	private int drawer_item_onion_peeling_pos;
+	private int drawer_header_project_pos;
+	private int drawer_item_save_pos;
+	private int drawer_item_save_as_pos;
+	private int drawer_item_share_pos;
+	private int drawer_item_close_project_pos;
+	
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private ListView mDrawerListView;
@@ -85,30 +95,23 @@ public class DrawActivity extends ActionBarActivity {
         });
 
         DrawerAdapter adapter = new DrawerAdapter(getApplicationContext());
-        String[] layerItems = {
-                getString(R.string.title_section1),
-                getString(R.string.title_section2)
-        };
+        adapter.addSectionHeaderItem(getString(R.string.drawer_header_layers));
+        drawer_header_layers_pos = drawer_item_cpt++;
+		adapter.addItem(getString(R.string.drawer_item_background_movie));
+		drawer_item_background_movie_pos = drawer_item_cpt++;
+		adapter.addItem(getString(R.string.drawer_item_onion_peeling));
+		drawer_item_onion_peeling_pos = drawer_item_cpt++;
 
-        String[] projectItems = {
-                getString(R.string.title_section3),
-                getString(R.string.title_section4),
-                getString(R.string.title_section5),
-                getString(R.string.title_section6),
-                getString(R.string.title_section7),
-                getString(R.string.title_section8),
-                getString(R.string.title_section9)
-        };
-
-        adapter.addSectionHeaderItem(getString(R.string.header_section1));
-        for(String str: layerItems) {
-            adapter.addItem(str);
-        }
-
-        adapter.addSectionHeaderItem(getString(R.string.header_section2));
-        for(String str: projectItems) {
-            adapter.addItem(str);
-        }
+		adapter.addSectionHeaderItem(getString(R.string.drawer_header_project));
+		drawer_header_project_pos = drawer_item_cpt++;
+		adapter.addItem(getString(R.string.drawer_item_save));
+		drawer_item_save_pos = drawer_item_cpt++;
+		adapter.addItem(getString(R.string.drawer_item_save_as));
+		drawer_item_save_as_pos = drawer_item_cpt++;
+		adapter.addItem(getString(R.string.drawer_item_share));
+		drawer_item_share_pos = drawer_item_cpt++;
+		adapter.addItem(getString(R.string.drawer_item_close_project));
+		drawer_item_close_project_pos = drawer_item_cpt++;
 
         mDrawerListView.setAdapter(adapter);
 
@@ -197,7 +200,7 @@ public class DrawActivity extends ActionBarActivity {
 
     public void onDrawerItemSelected(int position){
         switch(position){
-            case 1:
+            case drawer_item_background_movie_pos:
                 final ImageView drawZone = (ImageView)findViewById(R.id.imageView);
                 int visib = drawZone.getVisibility();
 
@@ -205,11 +208,11 @@ public class DrawActivity extends ActionBarActivity {
                 else drawZone.setVisibility(View.VISIBLE);
 
                 break;
-            case 2:
+            case drawer_item_onion_peeling_pos:
                 PeelingsCountDialog dialog = new PeelingsCountDialog();
                 dialog.show(getFragmentManager(), getString(R.string.dialog_peelings_title));
 				break;
-			case 10:
+			case drawer_item_close_project_pos:
 				this.finish();
 				break;
             default:

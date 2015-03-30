@@ -33,7 +33,7 @@
             <view
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                class="com.example.jeremy.testdrawer.CustomView"
+                class="com.example.jeremy.testdrawer.DrawZone"
                 android:id="@+id/view"
                 android:layout_gravity="center_horizontal|top"
                 android:visibility="visible"

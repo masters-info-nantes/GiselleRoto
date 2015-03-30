@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 /**
  * Created by X on 14/03/15.
  */
-public class CustomView extends View{
+public class DrawZone extends View{
 
     public int width;
     public  int height;
@@ -26,7 +26,7 @@ public class CustomView extends View{
     private Path circlePath;
     private Paint       mPaint;
 
-    public CustomView(Context c){
+    public DrawZone(Context c){
         super(c);
         context=c;
         mPath = new Path();
@@ -48,7 +48,7 @@ public class CustomView extends View{
         mPaint.setStrokeWidth(12);
     }
 
-    public CustomView(Context c, AttributeSet attrs){
+    public DrawZone(Context c, AttributeSet attrs){
         super (c, attrs);
         context=c;
         mPath = new Path();
@@ -70,7 +70,7 @@ public class CustomView extends View{
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setStrokeWidth(12);
     }
-    public CustomView(Context c, AttributeSet attrs, int defStyle){
+    public DrawZone(Context c, AttributeSet attrs, int defStyle){
         super (c, attrs, defStyle);
         context=c;
         mPath = new Path();
