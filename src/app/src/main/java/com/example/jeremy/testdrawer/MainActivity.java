@@ -77,9 +77,6 @@ public class MainActivity extends ActionBarActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_VIDEO_CAPTURE && resultCode == RESULT_OK) {
 
-            Toast.makeText(this, "Video saved to:\n" +
-                    data.getData(), Toast.LENGTH_LONG).show();
-
             Uri videoUri = data.getData();
             MediaMetadataRetriever player = new MediaMetadataRetriever();
             player.setDataSource(this, videoUri);

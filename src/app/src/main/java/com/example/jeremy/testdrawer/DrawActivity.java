@@ -1,5 +1,6 @@
 package com.example.jeremy.testdrawer;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -46,10 +47,16 @@ public class DrawActivity extends ActionBarActivity {
     private ArrayList<File> images;
     private int selectedImage;
 
+    // Because of the draw dialog
+    private static Activity currentActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw);
+
+        DrawActivity.currentActivity = this;
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
@@ -180,9 +187,11 @@ public class DrawActivity extends ActionBarActivity {
         switch (item.getItemId()) {
             case R.id.action_palette:
                 DrawConfigDialog dialog = new DrawConfigDialog();
+
                 Bundle dialogArgs = new Bundle();
 				dialogArgs.putInt("num", 1);
 				dialog.setArguments(dialogArgs);
+
                 dialog.show(getFragmentManager(), getString(R.string.dialog_peelings_title));
             break;
 
@@ -218,5 +227,13 @@ public class DrawActivity extends ActionBarActivity {
             default:
 				Log.v("DrawActivity","onDrawerItemSelected "+position);
         }
+    }
+
+    public static void DrawPopupCallback(int size, int color){
+        Log.d("zzz",""+size);
+        // update painter config
+        final DrawZone drawZone = (DrawZone) currentActivity.findViewById(R.id.view);
+        drawZone.setSize(size);
+      //  drawZone.setColor(color);
     }
 }

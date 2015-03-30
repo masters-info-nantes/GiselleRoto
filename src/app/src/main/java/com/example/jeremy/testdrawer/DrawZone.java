@@ -178,5 +178,11 @@ public class DrawZone extends View{
         return true;
     }*/
 
+    public void setColor(int color){
+        this.mPaint.setColor(color);
+    }
 
+    public void setSize(int size){
+        this.mPaint.setStrokeWidth((float)size);
+    }
 }
