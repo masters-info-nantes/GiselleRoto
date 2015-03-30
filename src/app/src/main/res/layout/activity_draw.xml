@@ -21,19 +21,25 @@
             android:paddingTop="0dp"
             android:paddingBottom="0dp"
             tools:context=".MainActivity$PlaceholderFragment">
-            <!--
-            <view
-				android:layout_width="fill_parent"
-				android:layout_height="fill_parent"
-				class="com.example.jeremy.testdrawer.CustomView"
-				android:id="@+id/view"
-				android:layout_gravity="center_horizontal|top"
-				android:visibility="visible"
-				android:layout_x="0dp"
-				android:layout_y="0dp"
-				android:background="@android:color/transparent"/>
-            -->
 
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/imageView"
+                android:layout_x="0dp"
+                android:layout_y="0dp" />
+
+            <!-- Keep behind image view = upper in the stack -->
+            <view
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                class="com.example.jeremy.testdrawer.CustomView"
+                android:id="@+id/view"
+                android:layout_gravity="center_horizontal|top"
+                android:visibility="visible"
+                android:layout_x="0dp"
+                android:layout_y="0dp"
+                android:background="@android:color/transparent"/>
 
             <com.getbase.floatingactionbutton.FloatingActionsMenu
                 xmlns:fab="http://schemas.android.com/apk/res-auto"
@@ -76,14 +82,6 @@
                     fab:fab_colorPressed="@color/white_pressed"/>
 
             </com.getbase.floatingactionbutton.FloatingActionsMenu>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
 
         </RelativeLayout>
 

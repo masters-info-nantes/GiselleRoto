@@ -138,7 +138,7 @@ public class DrawActivity extends ActionBarActivity {
         index = index >= images.size() ? images.size() - 1 : index;
 
         this.selectedImage = index;
-Log.d("totorr", ""+index);
+
         // change image
         Bitmap bitmap = BitmapFactory.decodeFile(this.images.get(index).getAbsolutePath());
         final ImageView drawZone = (ImageView)findViewById(R.id.imageView);

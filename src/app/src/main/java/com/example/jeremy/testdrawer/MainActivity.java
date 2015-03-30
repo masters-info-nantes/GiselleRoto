@@ -89,7 +89,10 @@ public class MainActivity extends ActionBarActivity {
 
             int framegap = 1000 / FPS;
 
-            for(int i = 0; i < duration * FPS; i++) {
+            // DEBUG
+            int max = /*duration * FPS*/1;
+
+            for(int i = 0; i < max; i++) {
                 Bitmap videoFrame = player.getFrameAtTime(i * framegap * 1000);
 
                 File dest = new File(getCacheDir(), "image" + i + ".png");
