@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.jeremy.testdrawer.R;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 public class DrawActivity extends ActionBarActivity {
@@ -133,7 +134,8 @@ public class DrawActivity extends ActionBarActivity {
 			for(int i = 0; i < imagesDir.listFiles().length; i++){
 				File curImage = imagesDir.listFiles()[i];
 
-				if(curImage.getAbsolutePath().contains("image")){
+				if(curImage.getAbsolutePath().contains("image")
+                        && !curImage.getAbsolutePath().contains("draw")){
 					this.images.add(curImage);
 				}
 			}
@@ -152,12 +154,36 @@ public class DrawActivity extends ActionBarActivity {
 		index = index < 0 ? 0 : index;
 		index = index >= images.size() ? images.size() - 1 : index;
 
-		this.selectedImage = index;
+        // save old draw
+        final DrawZone drawZone = (DrawZone)findViewById(R.id.view);
+        Bitmap bitmap = drawZone.getmBitmap();
+
+        if(bitmap != null) { // At begining drazone bitmap is null
+            String oldDrawPath = this.images.get(selectedImage).getAbsolutePath().replaceAll(".png", "-draw.png");
+            File dest = new File(oldDrawPath);
+            try {
+                FileOutputStream out = new FileOutputStream(dest);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+                out.flush();
+                out.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
 		// change image
-		Bitmap bitmap = BitmapFactory.decodeFile(this.images.get(index).getAbsolutePath());
-		final ImageView drawZone = (ImageView)findViewById(R.id.imageView);
-		drawZone.setImageBitmap(bitmap);
+        //  -> background
+        String imagePath = this.images.get(index).getAbsolutePath();
+		bitmap = BitmapFactory.decodeFile(imagePath);
+		final ImageView backImage = (ImageView)findViewById(R.id.imageView);
+        backImage.setImageBitmap(bitmap);
+
+        //  -> drawzone
+        String drawPath = imagePath.replaceAll(".png", "-draw.png");
+        bitmap = BitmapFactory.decodeFile(drawPath);
+        drawZone.setmBitmap(bitmap);
+
+        this.selectedImage = index;
 	}
 
 	@Override

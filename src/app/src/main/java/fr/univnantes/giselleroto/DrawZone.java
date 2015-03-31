@@ -74,9 +74,9 @@ public class DrawZone extends View{
 	
 	@Override
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-		super.onSizeChanged(w, h, oldw, oldh);
-		
-		mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        super.onSizeChanged(w, h, oldw, oldh);
+
+        mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
 		mCanvas = new Canvas(mBitmap);
 	}
 	
@@ -156,4 +156,14 @@ public class DrawZone extends View{
 	public void setToolWidth(float size){
 		this.mPaint.setStrokeWidth(size);
 	}
+
+    public Bitmap getmBitmap(){
+        return this.mBitmap;
+    }
+
+    public void setmBitmap(Bitmap bitmap){
+        mBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+        mCanvas = new Canvas(mBitmap);
+        invalidate();
+    }
 }

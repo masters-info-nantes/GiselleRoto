@@ -96,6 +96,7 @@ public class MainActivity extends ActionBarActivity {
 			int max = /*duration * FPS*/2;
 
 			for(int i = 0; i < max; i++) {
+                // Video image
 				Bitmap videoFrame = player.getFrameAtTime(i * framegap * 1000);
 
 				File dest = new File(getCacheDir(), "image" + i + ".png");
@@ -107,6 +108,19 @@ public class MainActivity extends ActionBarActivity {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+
+                // Draw image
+                Bitmap drawFrame = Bitmap.createBitmap(videoFrame.getWidth(), videoFrame.getHeight(), Bitmap.Config.ARGB_8888);
+                dest = new File(getCacheDir(), "image" + i + "-draw.png");
+                try {
+                    FileOutputStream out = new FileOutputStream(dest);
+                    drawFrame.compress(Bitmap.CompressFormat.PNG, 90, out);
+                    out.flush();
+                    out.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
 
 				Log.d("Wait", "Image " + (i+1) + "/" + max);
 			}
