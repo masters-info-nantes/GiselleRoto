@@ -27,14 +27,14 @@ import java.util.ArrayList;
 
 public class DrawActivity extends ActionBarActivity {
 	
-	private final int DRAWER_HEADER_LAYERS_POS = 0;
-	private final int DRAWER_ITEM_BACKGROUND_MOVIE_POS = 1;
-	private final int DRAWER_ITEM_ONION_PEELING_POS = 2;
-	private final int DRAWER_HEADER_PROJECT_POS = 3;
-	private final int DRAWER_ITEM_SAVE_POS = 4;
-	private final int DRAWER_ITEM_SAVE_AS_POS = 5;
-	private final int DRAWER_ITEM_SHARE_POS = 6;
-	private final int DRAWER_ITEM_CLOSE_PROJECT_POS = 7;
+	private static final int DRAWER_HEADER_LAYERS_POS = 0;
+	private static final int DRAWER_ITEM_BACKGROUND_MOVIE_POS = 1;
+	private static final int DRAWER_ITEM_ONION_PEELING_POS = 2;
+	private static final int DRAWER_HEADER_PROJECT_POS = 3;
+	private static final int DRAWER_ITEM_SAVE_POS = 4;
+	private static final int DRAWER_ITEM_SAVE_AS_POS = 5;
+	private static final int DRAWER_ITEM_SHARE_POS = 6;
+	private static final int DRAWER_ITEM_CLOSE_PROJECT_POS = 7;
 	
 	private DrawZone mDrawZone;
 	private DrawerLayout mDrawerLayout;
@@ -203,6 +203,7 @@ public class DrawActivity extends ActionBarActivity {
 
 	public void onDrawerItemSelected(int position){
 		switch(position){
+			//~ case DRAWER_HEADER_LAYERS_POS:
 			case DRAWER_ITEM_BACKGROUND_MOVIE_POS:
 				final ImageView drawZone = (ImageView)findViewById(R.id.imageView);
 				int visib = drawZone.getVisibility();
@@ -216,18 +217,56 @@ public class DrawActivity extends ActionBarActivity {
 			case DRAWER_ITEM_ONION_PEELING_POS:
 				PeelingsCountDialog dialog = new PeelingsCountDialog();
 				dialog.show(getFragmentManager(), getString(R.string.dialog_peelings_title));
+				// TODO finish implementation
+				break;
+			//~ case DRAWER_HEADER_PROJECT_POS:
+			case DRAWER_ITEM_SAVE_POS:
+				Log.w("DrawActivity","onDrawerItemSelected DRAWER_ITEM_SAVE_POS not yet implemented");
+				Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+				break;
+			case DRAWER_ITEM_SAVE_AS_POS:
+				Log.w("DrawActivity","onDrawerItemSelected DRAWER_ITEM_SAVE_AS_POS not yet implemented");
+				Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+				break;
+			case DRAWER_ITEM_SHARE_POS:
+				Log.w("DrawActivity","onDrawerItemSelected DRAWER_ITEM_SHARE_POS not yet implemented");
+				Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
 				break;
 			case DRAWER_ITEM_CLOSE_PROJECT_POS:
 				this.finish();
 				break;
-			//~ case DRAWER_HEADER_LAYERS_POS:
-			//~ case DRAWER_HEADER_PROJECT_POS:
-			//~ case DRAWER_ITEM_SAVE_POS:
-			//~ case DRAWER_ITEM_SAVE_AS_POS:
-			//~ case DRAWER_ITEM_SHARE_POS:
 			default:
 				Log.v("DrawActivity","onDrawerItemSelected "+position);
 		}
 	}
-
+	
+	public void onClickButtonFirst(View v) {
+		Log.w("DrawActivity","onClickButtonFirst not yet implemented");
+		Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+	}
+	
+	public void onClickButtonPlay(View v) {
+		Log.w("DrawActivity","onClickButtonPlay not yet implemented");
+		Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+	}
+	
+	public void onClickButtonLast(View v) {
+		Log.w("DrawActivity","onClickButtonLast not yet implemented");
+		Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+	}
+	
+	public void onClickFloatingToolPen(View v) {
+		Log.w("DrawActivity","onClickFloatingToolPen not yet implemented");
+		Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+	}
+	
+	public void onClickFloatingToolLine(View v) {
+		Log.w("DrawActivity","onClickFloatingToolEraser not yet implemented");
+		Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+	}
+	
+	public void onClickFloatingToolEraser(View v) {
+		Log.w("DrawActivity","onClickFloatingToolEraser not yet implemented");
+		Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+	}
 }
