@@ -10,9 +10,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.util.AttributeSet;
 
-/**
- * Created by X on 14/03/15.
- */
 public class DrawZone extends View{
 
 	private static final float TOUCH_TOLERANCE = 4;
@@ -30,6 +27,8 @@ public class DrawZone extends View{
 	private float mX;
 	private float mY;
 
+	private int currentColorId;
+	
 	public DrawZone(Context c){
 		super(c);
 		context = c;
@@ -49,6 +48,8 @@ public class DrawZone extends View{
 	}
 	
 	private void initPainters() {
+		currentColorId = R.color.material_black;
+		
 		mPath = new Path();
 		mBitmapPaint = new Paint(Paint.DITHER_FLAG);
 		circlePaint = new Paint();
@@ -62,7 +63,7 @@ public class DrawZone extends View{
 		mPaint = new Paint();
 		mPaint.setAntiAlias(true);
 		mPaint.setDither(true);
-		mPaint.setColor(Color.BLACK);
+		mPaint.setColor(getResources().getColor(currentColorId));
 		mPaint.setStyle(Paint.Style.STROKE);
 		mPaint.setStrokeJoin(Paint.Join.ROUND);
 		mPaint.setStrokeCap(Paint.Cap.ROUND);
@@ -138,15 +139,16 @@ public class DrawZone extends View{
 	}
 
 	public int getToolColor(){
-		return this.mPaint.getColor();
+		return this.currentColorId;
 	}
 	
 	public float getToolWidth(){
 		return this.mPaint.getStrokeWidth();
 	}
 	
-	public void setToolColor(int color){
-		this.mPaint.setColor(color);
+	public void setToolColor(int colorId){
+		this.currentColorId = colorId;
+		this.mPaint.setColor(getResources().getColor(this.currentColorId));
 	}
 	
 	public void setToolWidth(float size){

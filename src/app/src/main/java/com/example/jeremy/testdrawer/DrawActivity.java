@@ -27,14 +27,14 @@ import java.util.ArrayList;
 
 public class DrawActivity extends ActionBarActivity {
 	
-	private final int drawer_header_layers_pos = 0;
-	private final int drawer_item_background_movie_pos = 1;
-	private final int drawer_item_onion_peeling_pos = 2;
-	private final int drawer_header_project_pos = 3;
-	private final int drawer_item_save_pos = 4;
-	private final int drawer_item_save_as_pos = 5;
-	private final int drawer_item_share_pos = 6;
-	private final int drawer_item_close_project_pos = 7;
+	private final int DRAWER_HEADER_LAYERS_POS = 0;
+	private final int DRAWER_ITEM_BACKGROUND_MOVIE_POS = 1;
+	private final int DRAWER_ITEM_ONION_PEELING_POS = 2;
+	private final int DRAWER_HEADER_PROJECT_POS = 3;
+	private final int DRAWER_ITEM_SAVE_POS = 4;
+	private final int DRAWER_ITEM_SAVE_AS_POS = 5;
+	private final int DRAWER_ITEM_SHARE_POS = 6;
+	private final int DRAWER_ITEM_CLOSE_PROJECT_POS = 7;
 	
 	private DrawZone mDrawZone;
 	private DrawerLayout mDrawerLayout;
@@ -132,7 +132,6 @@ public class DrawActivity extends ActionBarActivity {
 	}
 
 	public void drawPopupCallback(float size, int color) {
-		Log.v("DrawActivity","drawPopupCallback size="+size+" color="+color);
 		mDrawZone.setToolWidth(size);
 		mDrawZone.setToolColor(color);
 	}
@@ -204,7 +203,7 @@ public class DrawActivity extends ActionBarActivity {
 
 	public void onDrawerItemSelected(int position){
 		switch(position){
-			case drawer_item_background_movie_pos:
+			case DRAWER_ITEM_BACKGROUND_MOVIE_POS:
 				final ImageView drawZone = (ImageView)findViewById(R.id.imageView);
 				int visib = drawZone.getVisibility();
 
@@ -214,18 +213,18 @@ public class DrawActivity extends ActionBarActivity {
 					drawZone.setVisibility(View.VISIBLE);
 				}
 				break;
-			case drawer_item_onion_peeling_pos:
+			case DRAWER_ITEM_ONION_PEELING_POS:
 				PeelingsCountDialog dialog = new PeelingsCountDialog();
 				dialog.show(getFragmentManager(), getString(R.string.dialog_peelings_title));
 				break;
-			case drawer_item_close_project_pos:
+			case DRAWER_ITEM_CLOSE_PROJECT_POS:
 				this.finish();
 				break;
-			//~ case drawer_header_layers_pos:
-			//~ case drawer_header_project_pos:
-			//~ case drawer_item_save_pos:
-			//~ case drawer_item_save_as_pos:
-			//~ case drawer_item_share_pos:
+			//~ case DRAWER_HEADER_LAYERS_POS:
+			//~ case DRAWER_HEADER_PROJECT_POS:
+			//~ case DRAWER_ITEM_SAVE_POS:
+			//~ case DRAWER_ITEM_SAVE_AS_POS:
+			//~ case DRAWER_ITEM_SHARE_POS:
 			default:
 				Log.v("DrawActivity","onDrawerItemSelected "+position);
 		}
