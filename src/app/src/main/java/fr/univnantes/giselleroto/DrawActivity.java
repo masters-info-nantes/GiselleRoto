@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -108,6 +109,18 @@ public class DrawActivity extends ActionBarActivity {
 		adapter.addItem(getString(R.string.drawer_item_close_project));
 
 		mDrawerListView.setAdapter(adapter);
+
+        final ImageButton buttonFirst = (ImageButton) findViewById(R.id.buttonFirst);
+        buttonFirst.setScaleX(0.8f);
+        buttonFirst.setScaleY(0.8f);
+
+        final ImageButton buttonPlay = (ImageButton) findViewById(R.id.buttonPlay);
+        buttonPlay.setScaleX(0.8f);
+        buttonPlay.setScaleY(0.8f);
+
+        final ImageButton buttonLast = (ImageButton) findViewById(R.id.buttonLast);
+        buttonLast.setScaleX(0.8f);
+        buttonLast.setScaleY(0.8f);
 
 		// Load first image
 		Intent intent = getIntent();
