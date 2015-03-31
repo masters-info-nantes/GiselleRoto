@@ -20,31 +20,6 @@ public class PeelingsCountDialog extends DialogFragment {
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-		// Bind seekbar and text
-		final View view = getActivity().getLayoutInflater().inflate(R.layout.dialog_peelings, null, false);
-		final SeekBar mySeekBar = ((SeekBar) view.findViewById(R.id.seekBarPeelings));
-
-		mySeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
-			@Override
-			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				Log.d("toto", "tatatta");
-				final TextView textView = (TextView) view.findViewById(R.id.textViewPeelings);
-				textView.setText("Pelures: " + arg1);
-			}
-
-			@Override
-			public void onStartTrackingTouch(SeekBar seekBar) {
-				Log.d("toto", "tatatta");
-			}
-
-			@Override
-			public void onStopTrackingTouch(SeekBar seekBar) {
-				Log.d("toto", "tatatta");
-				final TextView textView = (TextView) view.findViewById(R.id.textViewPeelings);
-				textView.setText("Pelures: " + seekBar.getProgress());
-			}
-		});
-
 		// Use the Builder class for convenient dialog construction
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		builder.setMessage(R.string.dialog_peelings_title)
@@ -60,9 +35,25 @@ public class PeelingsCountDialog extends DialogFragment {
 				});
 
 		View layout = getActivity().getLayoutInflater().inflate(R.layout.dialog_peelings, null);
-		builder.setView(layout);
+
+        // Bind seekbar and text
+        final TextView textView = (TextView) layout.findViewById(R.id.textViewPeelings);
+        final SeekBar mySeekBar = ((SeekBar) layout.findViewById(R.id.seekBarPeelings));
+
+        SeekBar.OnSeekBarChangeListener yourSeekBarListener = new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+            @Override
+            public void onProgressChanged(SeekBar seekBark, int progress, boolean fromUser) {
+                textView.setText("Pelures: " + progress);
+            }
+        };
+        mySeekBar.setOnSeekBarChangeListener(yourSeekBarListener);
 
 		// Create the AlertDialog object and return it
+        builder.setView(layout);
 		return builder.create();
 	}
 }

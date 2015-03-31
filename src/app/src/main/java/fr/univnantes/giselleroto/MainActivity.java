@@ -93,7 +93,7 @@ public class MainActivity extends ActionBarActivity {
 			int framegap = 1000 / FPS;
 
 			// TODO Remove this dirty debug thing
-			int max = /*duration * FPS*/6;
+			int max = /*duration * FPS*/2;
 
 			for(int i = 0; i < max; i++) {
 				Bitmap videoFrame = player.getFrameAtTime(i * framegap * 1000);
