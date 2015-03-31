@@ -36,8 +36,7 @@ public class DrawActivity extends ActionBarActivity {
 	private final int drawer_item_share_pos = 6;
 	private final int drawer_item_close_project_pos = 7;
 	
-	// Because of the draw dialog
-	private static Activity currentActivity;
+	private DrawZone mDrawZone;
 	private DrawerLayout mDrawerLayout;
 	private ActionBarDrawerToggle mDrawerToggle;
 	private ListView mDrawerListView;
@@ -53,7 +52,7 @@ public class DrawActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_draw);
 		
-		DrawActivity.currentActivity = this;
+		mDrawZone = (DrawZone)findViewById(R.id.view);
 		
 		final Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
 		setSupportActionBar(toolbar);
@@ -132,6 +131,12 @@ public class DrawActivity extends ActionBarActivity {
 		this.setSelectedImage(0);
 	}
 
+	public void drawPopupCallback(float size, int color) {
+		Log.v("DrawActivity","drawPopupCallback size="+size+" color="+color);
+		mDrawZone.setToolWidth(size);
+		mDrawZone.setToolColor(color);
+	}
+
 	private void setSelectedImage(int index) {
 		// checks
 		index = index < 0 ? 0 : index;
@@ -177,8 +182,10 @@ public class DrawActivity extends ActionBarActivity {
 		switch (item.getItemId()) {
 			case R.id.action_palette:
 				DrawConfigDialog dialog = new DrawConfigDialog();
+				dialog.setDrawActivity(this);
 				Bundle dialogArgs = new Bundle();
-				dialogArgs.putInt("num", 1);
+				dialogArgs.putFloat(DrawConfigDialog.VALUE_TOOL_WIDTH,mDrawZone.getToolWidth());
+				dialogArgs.putInt(DrawConfigDialog.VALUE_TOOL_COLOR,mDrawZone.getToolColor());
 				dialog.setArguments(dialogArgs);
 				dialog.show(getFragmentManager(), getString(R.string.dialog_peelings_title));
 			break;
@@ -224,11 +231,4 @@ public class DrawActivity extends ActionBarActivity {
 		}
 	}
 
-	public static void DrawPopupCallback(int size, int color){
-		Log.d("zzz",""+size);
-		// update painter config
-		final DrawZone drawZone = (DrawZone) currentActivity.findViewById(R.id.view);
-		drawZone.setSize(size);
-	  //  drawZone.setColor(color);
-	}
 }

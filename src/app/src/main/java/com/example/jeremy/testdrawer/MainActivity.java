@@ -82,7 +82,9 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if((requestCode == REQUEST_VIDEO_CAPTURE || requestCode == REQUEST_VIDEO_FROM_GALLERY) && resultCode == RESULT_OK) {
-
+			
+			Toast.makeText(this, "Video saved to:\n" + data.getData(), Toast.LENGTH_LONG).show();
+			
 			Uri videoUri = data.getData();
 			MediaMetadataRetriever player = new MediaMetadataRetriever();
 			player.setDataSource(this, videoUri);

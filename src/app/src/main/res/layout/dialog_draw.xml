@@ -10,13 +10,13 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:textAppearance="?android:attr/textAppearanceMedium"
-		android:text="Taille"
-		android:id="@+id/textView3" />
+		android:text="Taille (0)"
+		android:id="@+id/textViewToolWidth" />
 
 	<SeekBar
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:id="@+id/seekBar2"
+		android:id="@+id/seekBarToolWidth"
 		android:max="99" />
 
 	<TextView

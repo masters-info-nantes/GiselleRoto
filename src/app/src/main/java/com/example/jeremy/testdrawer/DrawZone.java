@@ -137,7 +137,19 @@ public class DrawZone extends View{
 		return true;
 	}
 
-	public void setSize(int size){
-		this.mPaint.setStrokeWidth((float)size);
+	public int getToolColor(){
+		return this.mPaint.getColor();
+	}
+	
+	public float getToolWidth(){
+		return this.mPaint.getStrokeWidth();
+	}
+	
+	public void setToolColor(int color){
+		this.mPaint.setColor(color);
+	}
+	
+	public void setToolWidth(float size){
+		this.mPaint.setStrokeWidth(size);
 	}
 }
