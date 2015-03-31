@@ -1,4 +1,4 @@
-package com.example.jeremy.testdrawer;
+package fr.univnantes.giselleroto;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

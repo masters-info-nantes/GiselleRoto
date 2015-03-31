@@ -1,4 +1,4 @@
-package com.example.jeremy.testdrawer;
+package fr.univnantes.giselleroto;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -6,11 +6,11 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import com.example.jeremy.testdrawer.R;
 
 /**
  * Created by jeremy on 08/03/15.

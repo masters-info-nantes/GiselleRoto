@@ -1,4 +1,4 @@
-package com.example.jeremy.testdrawer;
+package fr.univnantes.giselleroto;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,6 +9,8 @@ import android.graphics.Path;
 import android.view.MotionEvent;
 import android.view.View;
 import android.util.AttributeSet;
+
+import com.example.jeremy.testdrawer.R;
 
 public class DrawZone extends View{
 
@@ -36,13 +38,13 @@ public class DrawZone extends View{
 	}
 	
 	public DrawZone(Context c, AttributeSet attrs){
-		super(c,attrs);
+		super(c, attrs);
 		context = c;
 		initPainters();
 	}
 	
 	public DrawZone(Context c, AttributeSet attrs, int defStyle){
-		super(c,attrs,defStyle);
+		super(c, attrs, defStyle);
 		context = c;
 		initPainters();
 	}

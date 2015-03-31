@@ -1,4 +1,4 @@
-package com.example.jeremy.testdrawer;
+package fr.univnantes.giselleroto;
 
 import java.util.ArrayList;
 import java.util.TreeSet;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.jeremy.testdrawer.R;
 
 /**
  * Created by jeremy on 08/03/15.

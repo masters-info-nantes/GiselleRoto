@@ -1,7 +1,5 @@
-package com.example.jeremy.testdrawer;
+package fr.univnantes.giselleroto;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -12,15 +10,15 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.jeremy.testdrawer.R;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -183,8 +181,8 @@ public class DrawActivity extends ActionBarActivity {
 				DrawConfigDialog dialog = new DrawConfigDialog();
 				dialog.setDrawActivity(this);
 				Bundle dialogArgs = new Bundle();
-				dialogArgs.putFloat(DrawConfigDialog.VALUE_TOOL_WIDTH,mDrawZone.getToolWidth());
-				dialogArgs.putInt(DrawConfigDialog.VALUE_TOOL_COLOR,mDrawZone.getToolColor());
+				dialogArgs.putFloat(DrawConfigDialog.VALUE_TOOL_WIDTH, mDrawZone.getToolWidth());
+				dialogArgs.putInt(DrawConfigDialog.VALUE_TOOL_COLOR, mDrawZone.getToolColor());
 				dialog.setArguments(dialogArgs);
 				dialog.show(getFragmentManager(), getString(R.string.dialog_peelings_title));
 			break;
@@ -266,7 +264,7 @@ public class DrawActivity extends ActionBarActivity {
 	}
 	
 	public void onClickFloatingToolEraser(View v) {
-		Log.w("DrawActivity","onClickFloatingToolEraser not yet implemented");
+		Log.w("DrawActivity", "onClickFloatingToolEraser not yet implemented");
 		Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
 	}
 }
