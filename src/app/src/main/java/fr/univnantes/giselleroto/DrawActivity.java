@@ -239,8 +239,7 @@ public class DrawActivity extends ActionBarActivity {
 	}
 	
 	public void onClickButtonFirst(View v) {
-		Log.w("DrawActivity","onClickButtonFirst not yet implemented");
-		Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+        this.setSelectedImage(0);
 	}
 	
 	public void onClickButtonPlay(View v) {
@@ -249,8 +248,7 @@ public class DrawActivity extends ActionBarActivity {
 	}
 	
 	public void onClickButtonLast(View v) {
-		Log.w("DrawActivity","onClickButtonLast not yet implemented");
-		Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+        this.setSelectedImage(this.images.size() - 1);
 	}
 	
 	public void onClickFloatingToolPen(View v) {

@@ -70,10 +70,19 @@ public class MainActivity extends ActionBarActivity {
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if((requestCode == REQUEST_VIDEO_CAPTURE || requestCode == REQUEST_VIDEO_FROM_GALLERY) && resultCode == RESULT_OK) {
-			
-			Toast.makeText(this, "Video saved to:\n" + data.getData(), Toast.LENGTH_LONG).show();
-			
+		if((requestCode == REQUEST_VIDEO_CAPTURE || requestCode == REQUEST_VIDEO_FROM_GALLERY)
+                && resultCode == RESULT_OK)
+        {
+
+            // Clean working dir
+            File[] directory = getCacheDir().listFiles();
+            if(directory != null){
+                for (File file : directory ){
+                    file.delete();
+                }
+            }
+
+            // Extract frames from video
 			Uri videoUri = data.getData();
 			MediaMetadataRetriever player = new MediaMetadataRetriever();
 			player.setDataSource(this, videoUri);
@@ -84,7 +93,7 @@ public class MainActivity extends ActionBarActivity {
 			int framegap = 1000 / FPS;
 
 			// TODO Remove this dirty debug thing
-			int max = /*duration * FPS*/1;
+			int max = /*duration * FPS*/6;
 
 			for(int i = 0; i < max; i++) {
 				Bitmap videoFrame = player.getFrameAtTime(i * framegap * 1000);
