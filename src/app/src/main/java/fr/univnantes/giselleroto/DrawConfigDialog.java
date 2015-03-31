@@ -28,19 +28,20 @@ public class DrawConfigDialog extends DialogFragment implements View.OnClickList
 	private DrawActivity mDrawActivity;
 	
 	private int seekBarProgress;
-	//~ private int currentColor;
 	private int currentColorId;
 	
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
-		this.currentColorId = 0;
-		
+
 		// Use the Builder class for convenient dialog construction
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		builder.setMessage(R.string.dialog_draw_title)
 				.setPositiveButton(R.string.dialog_default_positive, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
-						mDrawActivity.drawPopupCallback(getSelectedSize(), getSelectedColorId());
+						mDrawActivity.drawPopupCallback(
+                                getSelectedSize(),
+                                getSelectedColorId()
+                        );
 					}
 				})
 				.setNegativeButton(R.string.dialog_default_negative, new DialogInterface.OnClickListener() {
@@ -107,11 +108,12 @@ public class DrawConfigDialog extends DialogFragment implements View.OnClickList
 		tmp = layout.findViewById(R.id.pickerOrange);
 		colors.put(tmp, false);
 		colorsToPickers.put(R.color.material_orange,tmp);
-		
+
 		int bundleColor = getArguments().getInt(DrawConfigDialog.VALUE_TOOL_COLOR,0);
 		View selected = bundleColor != 0 ? colorsToPickers.get(Integer.valueOf(bundleColor)) : layout.findViewById(R.id.pickerBlack);
-		
-		for (Map.Entry<View, Boolean> v : colors.entrySet()) {
+        this.currentColorId = bundleColor;
+
+        for (Map.Entry<View, Boolean> v : colors.entrySet()) {
 			v.getKey().setOnClickListener(this);
 			if(v.getKey().equals(selected)) {
 				v.getKey().setScaleX(0.98f);
