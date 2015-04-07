@@ -127,6 +127,7 @@ public class MainActivity extends ActionBarActivity {
 
 			Intent intentDraw = new Intent(this, DrawActivity.class);
 			intentDraw.putExtra("imagesDir", getCacheDir().getAbsolutePath());
+            intentDraw.putExtra("videoURI", videoUri);
 			startActivity(intentDraw);
 		}
 	}

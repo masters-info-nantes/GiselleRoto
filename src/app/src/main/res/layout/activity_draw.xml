@@ -25,7 +25,8 @@
 			<ImageView
 				android:layout_width="fill_parent"
 				android:layout_height="fill_parent"
-				android:id="@+id/imageView"
+				android:id="@+id/imageDraw"
+                android:layout_gravity="center_horizontal|top"
 				android:layout_x="0dp"
 				android:layout_y="0dp" />
 
@@ -34,7 +35,7 @@
 				android:layout_width="fill_parent"
 				android:layout_height="fill_parent"
 				class="fr.univnantes.giselleroto.DrawZone"
-				android:id="@+id/view"
+				android:id="@+id/drawZone"
 				android:layout_gravity="center_horizontal|top"
 				android:visibility="visible"
 				android:layout_x="0dp"

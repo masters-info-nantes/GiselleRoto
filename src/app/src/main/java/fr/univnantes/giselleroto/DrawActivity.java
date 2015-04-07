@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -47,12 +48,15 @@ public class DrawActivity extends ActionBarActivity {
 	private ArrayList<File> images;
 	private int selectedImage;
 
+    private Uri videoURI;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_draw);
-		
-		mDrawZone = (DrawZone)findViewById(R.id.view);
+
+        videoURI = getIntent().getParcelableExtra("videoURI");
+		mDrawZone = (DrawZone)findViewById(R.id.drawZone);
 		
 		final Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
 		setSupportActionBar(toolbar);
@@ -123,6 +127,11 @@ public class DrawActivity extends ActionBarActivity {
         buttonLast.setScaleX(0.8f);
         buttonLast.setScaleY(0.8f);
 
+        // Fix drawzone size
+        final ImageView imageDraw = (ImageView) findViewById(R.id.imageDraw);
+        mDrawZone.setMinimumWidth(imageDraw.getWidth());
+        mDrawZone.setMinimumHeight(imageDraw.getHeight());
+
 		// Load first image
 		Intent intent = getIntent();
 		String dirPath = intent.getStringExtra("imagesDir");
@@ -155,7 +164,7 @@ public class DrawActivity extends ActionBarActivity {
 		index = index >= images.size() ? images.size() - 1 : index;
 
         // save old draw
-        final DrawZone drawZone = (DrawZone)findViewById(R.id.view);
+        final DrawZone drawZone = (DrawZone)findViewById(R.id.drawZone);
         Bitmap bitmap = drawZone.getmBitmap();
 
         if(bitmap != null) { // At begining drazone bitmap is null
@@ -175,7 +184,7 @@ public class DrawActivity extends ActionBarActivity {
         //  -> background
         String imagePath = this.images.get(index).getAbsolutePath();
 		bitmap = BitmapFactory.decodeFile(imagePath);
-		final ImageView backImage = (ImageView)findViewById(R.id.imageView);
+		final ImageView backImage = (ImageView)findViewById(R.id.imageDraw);
         backImage.setImageBitmap(bitmap);
 
         //  -> drawzone
@@ -242,7 +251,7 @@ public class DrawActivity extends ActionBarActivity {
 		switch(position){
 			//~ case DRAWER_HEADER_LAYERS_POS:
 			case DRAWER_ITEM_BACKGROUND_MOVIE_POS:
-				final ImageView drawZone = (ImageView)findViewById(R.id.imageView);
+				final ImageView drawZone = (ImageView)findViewById(R.id.imageDraw);
 				int visib = drawZone.getVisibility();
 
 				if(visib == View.VISIBLE) {
@@ -282,8 +291,9 @@ public class DrawActivity extends ActionBarActivity {
 	}
 	
 	public void onClickButtonPlay(View v) {
-		Log.w("DrawActivity","onClickButtonPlay not yet implemented");
-		Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(videoURI, "video/mp4");
+        startActivity(intent);
 	}
 	
 	public void onClickButtonLast(View v) {
