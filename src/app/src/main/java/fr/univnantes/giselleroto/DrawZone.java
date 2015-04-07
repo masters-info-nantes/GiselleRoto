@@ -16,6 +16,10 @@ public class DrawZone extends View{
 
 	private static final float TOUCH_TOLERANCE = 4;
 
+    public static final int TOOL_PEN = 0;
+    public static final int TOOL_ERASER = 1;
+    public static final int TOOL_LINE = 2;
+
 	public int width;
 	public int height;
 	private Bitmap mBitmap;
@@ -28,6 +32,7 @@ public class DrawZone extends View{
 	private Paint mPaint;
 	private float mX;
 	private float mY;
+    private int currentTool;
 
 	private int currentColorId;
 	
@@ -50,6 +55,7 @@ public class DrawZone extends View{
 	}
 	
 	private void initPainters() {
+        currentTool = TOOL_LINE;
 		currentColorId = R.color.material_black;
 		
 		mPath = new Path();
@@ -122,7 +128,18 @@ public class DrawZone extends View{
 	public boolean onTouchEvent(MotionEvent event){
 		float x = event.getX();
 		float y = event.getY();
-		
+
+        if(currentTool == TOOL_ERASER){
+            Bitmap emptyImage = Bitmap.createBitmap(
+                    mBitmap.getWidth(),
+                    mBitmap.getHeight(),
+                    Bitmap.Config.ARGB_8888
+            );
+            this.setmBitmap(emptyImage);
+
+            return true;
+        }
+
 		switch (event.getAction()) {
 			case MotionEvent.ACTION_DOWN:
 				touchStart(x, y);
@@ -165,5 +182,9 @@ public class DrawZone extends View{
         mBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
         mCanvas = new Canvas(mBitmap);
         invalidate();
+    }
+
+    public void setCurrentTool(int tool){
+        this.currentTool = tool;
     }
 }

@@ -21,6 +21,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.jeremy.testdrawer.R;
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -310,17 +312,34 @@ public class DrawActivity extends ActionBarActivity {
 	}
 	
 	public void onClickFloatingToolPen(View v) {
-		Log.w("DrawActivity","onClickFloatingToolPen not yet implemented");
-		Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+
+        FloatingActionButton buttonPen = (FloatingActionButton) findViewById(R.id.floating_button_pen);
+        FloatingActionButton buttonEraser = (FloatingActionButton) findViewById(R.id.floating_button_eraser);
+        FloatingActionButton buttonLine = (FloatingActionButton) findViewById(R.id.floating_button_line);
+
+        buttonPen.setColorNormalResId(R.color.black_semi_transparent);
+        buttonEraser.setColorNormalResId(R.color.white);
+        buttonLine.setColorNormalResId(R.color.white);
+
+        mDrawZone.setCurrentTool(DrawZone.TOOL_PEN);
 	}
 	
 	public void onClickFloatingToolLine(View v) {
-		Log.w("DrawActivity","onClickFloatingToolEraser not yet implemented");
+        //mDrawZone.setCurrentTool(DrawZone.TOOL_LINE);
+		Log.w("DrawActivity","onClickFloatingToolLine not yet implemented");
 		Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
 	}
 	
 	public void onClickFloatingToolEraser(View v) {
-		Log.w("DrawActivity", "onClickFloatingToolEraser not yet implemented");
-		Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+
+        FloatingActionButton buttonPen = (FloatingActionButton) findViewById(R.id.floating_button_pen);
+        FloatingActionButton buttonEraser = (FloatingActionButton) findViewById(R.id.floating_button_eraser);
+        FloatingActionButton buttonLine = (FloatingActionButton) findViewById(R.id.floating_button_line);
+
+        buttonPen.setColorNormalResId(R.color.white);
+        buttonEraser.setColorNormalResId(R.color.black_semi_transparent);
+        buttonLine.setColorNormalResId(R.color.white);
+
+        mDrawZone.setCurrentTool(DrawZone.TOOL_ERASER);
 	}
 }

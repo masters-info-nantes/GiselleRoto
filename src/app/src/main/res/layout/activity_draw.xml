@@ -59,30 +59,33 @@
 
 
 				<com.getbase.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floating_button_eraser"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					fab:fab_colorNormal="@color/white"
 					fab:fab_size="mini"
 					fab:fab_icon="@mipmap/ic_floating_eraser"
-					fab:fab_colorPressed="@color/white_pressed"
+					fab:fab_colorPressed="@color/black_semi_transparent"
 					android:onClick="onClickFloatingToolEraser"/>
 
 				<com.getbase.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floating_button_line"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					fab:fab_colorNormal="@color/white"
 					fab:fab_size="mini"
 					fab:fab_icon="@mipmap/ic_floating_line"
-					fab:fab_colorPressed="@color/white_pressed"
+					fab:fab_colorPressed="@color/black_semi_transparent"
 					android:onClick="onClickFloatingToolLine"/>
 
 				<com.getbase.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floating_button_pen"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					fab:fab_colorNormal="@color/white"
+					fab:fab_colorNormal="@color/black_semi_transparent"
 					fab:fab_size="mini"
 					fab:fab_icon="@mipmap/ic_floating_pen"
-					fab:fab_colorPressed="@color/white_pressed"
+					fab:fab_colorPressed="@color/black_semi_transparent"
 					android:onClick="onClickFloatingToolPen"/>
 
 			</com.getbase.floatingactionbutton.FloatingActionsMenu>
