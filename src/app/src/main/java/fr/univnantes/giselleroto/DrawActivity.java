@@ -282,8 +282,11 @@ public class DrawActivity extends ActionBarActivity {
                 startActivity(Intent.createChooser(sharingIntent, "Share image using"));
 				break;
 			case DRAWER_ITEM_CLOSE_PROJECT_POS:
-				this.finish();
-				break;
+                Intent mainActivity = new Intent(this, MainActivity.class);
+
+                // Clear other activities in stack
+                mainActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(mainActivity);
 			default:
 				Log.v("DrawActivity","onDrawerItemSelected "+position);
 		}
