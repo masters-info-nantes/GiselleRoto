@@ -310,9 +310,10 @@ public class DrawActivity extends ActionBarActivity {
 	public void onClickButtonLast(View v) {
         this.setSelectedImage(this.images.size() - 1);
 	}
-	
+
 	public void onClickFloatingToolPen(View v) {
 
+        // Change buttons background to highlight selected tool
         FloatingActionButton buttonPen = (FloatingActionButton) findViewById(R.id.floating_button_pen);
         FloatingActionButton buttonEraser = (FloatingActionButton) findViewById(R.id.floating_button_eraser);
         FloatingActionButton buttonLine = (FloatingActionButton) findViewById(R.id.floating_button_line);
@@ -321,7 +322,12 @@ public class DrawActivity extends ActionBarActivity {
         buttonEraser.setColorNormalResId(R.color.white);
         buttonLine.setColorNormalResId(R.color.white);
 
+        // Click action
         mDrawZone.setCurrentTool(DrawZone.TOOL_PEN);
+
+        // Collapse menu (not automatic)
+        FloatingActionsMenu floatingMenu = (FloatingActionsMenu) findViewById(R.id.floating_menu);
+        floatingMenu.collapse();
 	}
 	
 	public void onClickFloatingToolLine(View v) {
@@ -332,6 +338,7 @@ public class DrawActivity extends ActionBarActivity {
 	
 	public void onClickFloatingToolEraser(View v) {
 
+        // Change buttons background to highlight selected tool
         FloatingActionButton buttonPen = (FloatingActionButton) findViewById(R.id.floating_button_pen);
         FloatingActionButton buttonEraser = (FloatingActionButton) findViewById(R.id.floating_button_eraser);
         FloatingActionButton buttonLine = (FloatingActionButton) findViewById(R.id.floating_button_line);
@@ -340,6 +347,11 @@ public class DrawActivity extends ActionBarActivity {
         buttonEraser.setColorNormalResId(R.color.black_semi_transparent);
         buttonLine.setColorNormalResId(R.color.white);
 
+        // Click action
         mDrawZone.setCurrentTool(DrawZone.TOOL_ERASER);
+
+        // Collapse menu (not automatic)
+        FloatingActionsMenu floatingMenu = (FloatingActionsMenu) findViewById(R.id.floating_menu);
+        floatingMenu.collapse();
 	}
 }
