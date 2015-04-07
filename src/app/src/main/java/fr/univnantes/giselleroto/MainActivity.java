@@ -23,6 +23,7 @@ public class MainActivity extends ActionBarActivity {
 
 	private static final int REQUEST_VIDEO_FROM_GALLERY = 1;
 	private static final int REQUEST_VIDEO_CAPTURE = 2;
+    private static final int REQUEST_PICK_FILE = 3;
 	private static final int FPS = 3;
 
 	private CharSequence mTitle;
@@ -49,7 +50,12 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	public void openProjectClick(View v) {
-		startActivity(new Intent(this,DrawActivity.class));
+        Intent theIntent = new Intent(Intent.ACTION_PICK);
+        try {
+             startActivityForResult(theIntent,REQUEST_PICK_FILE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 	}
 
 	public void openGalleryClick(View v) {
@@ -130,5 +136,9 @@ public class MainActivity extends ActionBarActivity {
             intentDraw.putExtra("videoURI", videoUri);
 			startActivity(intentDraw);
 		}
+        else if(requestCode == REQUEST_PICK_FILE && resultCode == RESULT_OK){
+            String theFolderPath = data.getData().getPath();
+            Log.d("toto", theFolderPath);
+        }
 	}
 }

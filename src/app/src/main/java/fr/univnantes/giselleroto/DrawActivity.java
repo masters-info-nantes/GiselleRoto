@@ -275,8 +275,11 @@ public class DrawActivity extends ActionBarActivity {
 				Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
 				break;
 			case DRAWER_ITEM_SHARE_POS:
-				Log.w("DrawActivity","onDrawerItemSelected DRAWER_ITEM_SHARE_POS not yet implemented");
-				Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+
+                sharingIntent.setType(getContentResolver().getType(videoURI));
+                sharingIntent.putExtra(Intent.EXTRA_STREAM, videoURI);
+                startActivity(Intent.createChooser(sharingIntent, "Share image using"));
 				break;
 			case DRAWER_ITEM_CLOSE_PROJECT_POS:
 				this.finish();
@@ -291,6 +294,9 @@ public class DrawActivity extends ActionBarActivity {
 	}
 	
 	public void onClickButtonPlay(View v) {
+        // TODO Play generated video instead
+        Toast.makeText(this, "Vidéo originale", Toast.LENGTH_SHORT).show();
+
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(videoURI, "video/mp4");
         startActivity(intent);
