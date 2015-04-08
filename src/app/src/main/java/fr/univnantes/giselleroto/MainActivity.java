@@ -50,9 +50,11 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	public void openProjectClick(View v) {
-        Intent theIntent = new Intent(Intent.ACTION_PICK);
+        Intent theIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        theIntent.addCategory(Intent.CATEGORY_OPENABLE);
+        theIntent.setType("file/*");
         try {
-             startActivityForResult(theIntent,REQUEST_PICK_FILE);
+             startActivityForResult(theIntent,MainActivity.REQUEST_PICK_FILE);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,7 +62,7 @@ public class MainActivity extends ActionBarActivity {
 
 	public void openGalleryClick(View v) {
 		Intent takeVideoFromGallery = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
-		startActivityForResult(takeVideoFromGallery, REQUEST_VIDEO_FROM_GALLERY); 
+		startActivityForResult(takeVideoFromGallery, MainActivity.REQUEST_VIDEO_FROM_GALLERY); 
 	}
 	
 	public void openCameraClick(View v) {
@@ -70,13 +72,13 @@ public class MainActivity extends ActionBarActivity {
 		takeVideoIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
 		if (takeVideoIntent.resolveActivity(getPackageManager()) != null) {
-			startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE);
+			startActivityForResult(takeVideoIntent, MainActivity.REQUEST_VIDEO_CAPTURE);
 		}
 	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if((requestCode == REQUEST_VIDEO_CAPTURE || requestCode == REQUEST_VIDEO_FROM_GALLERY)
+		if((requestCode == MainActivity.REQUEST_VIDEO_CAPTURE || requestCode == MainActivity.REQUEST_VIDEO_FROM_GALLERY)
                 && resultCode == RESULT_OK)
         {
 
@@ -136,7 +138,7 @@ public class MainActivity extends ActionBarActivity {
             intentDraw.putExtra("videoURI", videoUri);
 			startActivity(intentDraw);
 		}
-        else if(requestCode == REQUEST_PICK_FILE && resultCode == RESULT_OK){
+        else if(requestCode == MainActivity.REQUEST_PICK_FILE && resultCode == RESULT_OK){
             String theFolderPath = data.getData().getPath();
             Log.d("toto", theFolderPath);
         }

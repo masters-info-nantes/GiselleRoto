@@ -55,7 +55,7 @@ public class DrawZone extends View{
 	}
 	
 	private void initPainters() {
-        currentTool = TOOL_LINE;
+        currentTool = TOOL_PEN;
 		currentColorId = R.color.material_black;
 		
 		mPath = new Path();
