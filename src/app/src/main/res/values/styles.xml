@@ -2,9 +2,15 @@
 
 	<!-- Base application theme. -->
 	<style name="AppTheme" parent="Theme.AppCompat.Light">
+		<item name="android:colorPrimary">@color/custom_primary</item>
+		<item name="android:colorPrimaryDark">@color/custom_primary_dark</item>
+		<item name="android:windowBackground">@color/material_white</item>
+		<item name="android:colorAccent">@color/custom_accent</item>
+		<item name="android:textColorPrimary">@color/custom_primary_text</item>
+		<item name="android:divider">@color/custom_divider</item>
+		
 		<item name="android:windowNoTitle">true</item>
 		<item name="windowActionBar">false</item> <!-- For 2.x version -->
-
 		<item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
 	</style>
 

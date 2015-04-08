@@ -18,4 +18,13 @@
 	<color name="material_yellow">#FFEB3B</color>
 	<color name="material_green">#4CAF50</color>
 	<color name="material_orange">#FF9800</color>
+	
+	<color name="custom_primary">#2196F3</color>
+	<color name="custom_primary_dark">#1976D2</color>
+	<color name="custom_primary_light">#BBDEFB</color>
+	<color name="custom_accent">#795548</color>
+	<color name="custom_primary_text">#212121</color>
+	<color name="custom_secondary_text">#727272</color>
+	<color name="custom_icons">#FFFFFF</color>
+	<color name="custom_divider">#B6B6B6</color>
 </resources>
