@@ -17,6 +17,10 @@ import com.example.jeremy.testdrawer.R;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Popup for brush style configuration
+ * for the draw zone
+ */
 public class DrawConfigDialog extends DialogFragment implements View.OnClickListener{
 	
 	public final static String VALUE_TOOL_WIDTH = "DrawConfigDialog.value.TOOL_WIDTH";
@@ -130,6 +134,9 @@ public class DrawConfigDialog extends DialogFragment implements View.OnClickList
 		return builder.create();
 	}
 
+    /**
+     * Tap on a color
+     */
 	@Override
 	public void onClick(View v) {
 		Boolean active = colors.get(v);

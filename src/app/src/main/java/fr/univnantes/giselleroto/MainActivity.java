@@ -19,12 +19,19 @@ import com.example.jeremy.testdrawer.R;
 import java.io.File;
 import java.io.FileOutputStream;
 
+/**
+ * First activity launched with the application
+ * Display the home page which ask the user to create
+ * or open a project
+ */
 public class MainActivity extends ActionBarActivity {
 
-	private static final int REQUEST_VIDEO_FROM_GALLERY = 1;
+	// Unique identifier for intent callback
+    private static final int REQUEST_VIDEO_FROM_GALLERY = 1;
 	private static final int REQUEST_VIDEO_CAPTURE = 2;
     private static final int REQUEST_PICK_FILE = 3;
-	private static final int FPS = 3;
+
+    private static final int FPS = 3;
 
 	private CharSequence mTitle;
 
@@ -49,6 +56,9 @@ public class MainActivity extends ActionBarActivity {
 		super.onPostCreate(savedInstanceState);
 	}
 
+    /**
+     * Following methods are callbacks for interface buttons
+     */
 	public void openProjectClick(View v) {
         Intent theIntent = new Intent(Intent.ACTION_GET_CONTENT);
         theIntent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -76,9 +86,14 @@ public class MainActivity extends ActionBarActivity {
 		}
 	}
 
+    /**
+     * Callback method for each intent launched from this class
+     */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if((requestCode == MainActivity.REQUEST_VIDEO_CAPTURE || requestCode == MainActivity.REQUEST_VIDEO_FROM_GALLERY)
+
+        // Create a new project from an existing video
+		if((requestCode == REQUEST_VIDEO_CAPTURE || requestCode == REQUEST_VIDEO_FROM_GALLERY)
                 && resultCode == RESULT_OK)
         {
 
@@ -104,6 +119,7 @@ public class MainActivity extends ActionBarActivity {
 			int max = /*duration * FPS*/2;
 
 			for(int i = 0; i < max; i++) {
+
                 // Video image
 				Bitmap videoFrame = player.getFrameAtTime(i * framegap * 1000);
 
@@ -129,18 +145,22 @@ public class MainActivity extends ActionBarActivity {
                     e.printStackTrace();
                 }
 
-
+                Toast.makeText(this, "Wait... Image " + (i+1) + "/" + max, Toast.LENGTH_SHORT).show();
 				Log.d("Wait", "Image " + (i+1) + "/" + max);
 			}
 
+            // The project is loaded, go to the draw view
 			Intent intentDraw = new Intent(this, DrawActivity.class);
 			intentDraw.putExtra("imagesDir", getCacheDir().getAbsolutePath());
             intentDraw.putExtra("videoURI", videoUri);
 			startActivity(intentDraw);
 		}
+        
+        // Open an existing project
         else if(requestCode == MainActivity.REQUEST_PICK_FILE && resultCode == RESULT_OK){
             String theFolderPath = data.getData().getPath();
-            Log.d("toto", theFolderPath);
+            Toast.makeText(this, "Not yet implemented", Toast.LENGTH_SHORT).show();
+            Log.d("Pick file", theFolderPath);
         }
 	}
 }

@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.jeremy.testdrawer.R;
@@ -28,6 +29,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
+/**
+ * Activity launched after project opening
+ * Heart of this application
+ */
 public class DrawActivity extends ActionBarActivity {
 	
 	private static final int DRAWER_HEADER_LAYERS_POS = 0;
@@ -38,7 +43,8 @@ public class DrawActivity extends ActionBarActivity {
 	private static final int DRAWER_ITEM_SAVE_AS_POS = 5;
 	private static final int DRAWER_ITEM_SHARE_POS = 6;
 	private static final int DRAWER_ITEM_CLOSE_PROJECT_POS = 7;
-	
+
+    // Interface elements
 	private DrawZone mDrawZone;
 	private DrawerLayout mDrawerLayout;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -47,6 +53,7 @@ public class DrawActivity extends ActionBarActivity {
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
 
+    // Images and video management
 	private ArrayList<File> images;
 	private int selectedImage;
 
@@ -54,6 +61,7 @@ public class DrawActivity extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_draw);
 
@@ -67,7 +75,7 @@ public class DrawActivity extends ActionBarActivity {
 
 		mTitle = getTitle();
 
-		// Drawer configuration
+		// Drawer menu configuration
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerToggle = new ActionBarDrawerToggle(
 				this,
@@ -93,7 +101,7 @@ public class DrawActivity extends ActionBarActivity {
 
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-		// Drawer list
+		// Fill drawer menu with items
 		mDrawerListView = (ListView) findViewById(R.id.nav_list);
 
 		mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -117,6 +125,7 @@ public class DrawActivity extends ActionBarActivity {
 
 		mDrawerListView.setAdapter(adapter);
 
+        // Change buttons size (on the first menu row)
         final ImageButton buttonFirst = (ImageButton) findViewById(R.id.buttonFirst);
         buttonFirst.setScaleX(0.8f);
         buttonFirst.setScaleY(0.8f);
@@ -160,12 +169,18 @@ public class DrawActivity extends ActionBarActivity {
 		mDrawZone.setToolColor(color);
 	}
 
+    /**
+     * Change the current image: saves the current draw
+     * and load asked image and draw
+     * @param index
+     */
 	private void setSelectedImage(int index) {
-		// checks
+
+		// Check index out of bounds
 		index = index < 0 ? 0 : index;
 		index = index >= images.size() ? images.size() - 1 : index;
 
-        // save old draw
+        // Save old draw
         final DrawZone drawZone = (DrawZone)findViewById(R.id.drawZone);
         Bitmap bitmap = drawZone.getmBitmap();
 
@@ -182,7 +197,7 @@ public class DrawActivity extends ActionBarActivity {
             }
         }
 
-		// change image
+		// Change image
         //  -> background
         String imagePath = this.images.get(index).getAbsolutePath();
 		bitmap = BitmapFactory.decodeFile(imagePath);
@@ -206,8 +221,6 @@ public class DrawActivity extends ActionBarActivity {
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
-		// This method should always be called by your Activity's
-		// onConfigurationChanged method.
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
@@ -218,6 +231,9 @@ public class DrawActivity extends ActionBarActivity {
 		return super.onCreateOptionsMenu(menu);
 	}
 
+    /**
+      * Callback for buttons in the title menu
+     */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -225,14 +241,18 @@ public class DrawActivity extends ActionBarActivity {
 			return true;
 		}
 
-		// Handle other action bar items...
 		switch (item.getItemId()) {
 			case R.id.action_palette:
+                // Create popup
 				DrawConfigDialog dialog = new DrawConfigDialog();
 				dialog.setDrawActivity(this);
+
+                // Give current color and size to the popup
 				Bundle dialogArgs = new Bundle();
 				dialogArgs.putFloat(DrawConfigDialog.VALUE_TOOL_WIDTH, mDrawZone.getToolWidth());
 				dialogArgs.putInt(DrawConfigDialog.VALUE_TOOL_COLOR, mDrawZone.getToolColor());
+
+                // Show popup
 				dialog.setArguments(dialogArgs);
 				dialog.show(getFragmentManager(), getString(R.string.dialog_peelings_title));
 			break;
@@ -249,6 +269,9 @@ public class DrawActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+    /**
+     * Callback for items in the drawer menu
+     */
 	public void onDrawerItemSelected(int position){
 		switch(position){
 			//~ case DRAWER_HEADER_LAYERS_POS:
@@ -293,7 +316,11 @@ public class DrawActivity extends ActionBarActivity {
 				Log.v("DrawActivity","onDrawerItemSelected "+position);
 		}
 	}
-	
+
+    /**
+     * Following methods are callback for buttons
+     * in the first row of the drawer menu
+     */
 	public void onClickButtonFirst(View v) {
         this.setSelectedImage(0);
 	}
@@ -311,6 +338,10 @@ public class DrawActivity extends ActionBarActivity {
         this.setSelectedImage(this.images.size() - 1);
 	}
 
+    /**
+     * Following methods are callback for buttons
+     * in the floating menu
+     */
 	public void onClickFloatingToolPen(View v) {
 
         // Change buttons background to highlight selected tool
