@@ -1,6 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-	android:layout_height="match_parent" tools:context=".MainActivity">
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".MainActivity">
 
 	<include
 		android:id="@+id/app_bar"
@@ -34,6 +36,8 @@
 			android:textStyle="italic" />
 		<Button
 			style="?android:attr/buttonStyleSmall"
+			android:background="@color/custom_primary_light"
+			android:padding="5dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="@string/text_button_new_gallery"
@@ -45,6 +49,8 @@
 			android:onClick="openGalleryClick"/>
 		<Button
 			style="?android:attr/buttonStyleSmall"
+			android:background="@color/custom_primary_light"
+			android:padding="5dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="@string/text_button_new_camera"
@@ -55,6 +61,8 @@
 			android:onClick="openCameraClick"/>
 		<Button
 			style="?android:attr/buttonStyleSmall"
+			android:background="@color/custom_primary_light"
+			android:padding="5dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="@string/text_button_open"

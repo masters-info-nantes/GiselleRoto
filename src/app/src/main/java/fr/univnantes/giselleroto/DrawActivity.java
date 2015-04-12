@@ -28,6 +28,8 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Activity launched after project opening
@@ -58,13 +60,16 @@ public class DrawActivity extends ActionBarActivity {
 	private int selectedImage;
 
     private Uri videoURI;
-
+	private long lastBackPress;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_draw);
-
+		
+		lastBackPress = Calendar.getInstance().getTimeInMillis();
+		
         videoURI = getIntent().getParcelableExtra("videoURI");
 		mDrawZone = (DrawZone)findViewById(R.id.drawZone);
 		
@@ -83,21 +88,21 @@ public class DrawActivity extends ActionBarActivity {
 				toolbar,
 				R.string.drawer_open,
 				R.string.drawer_close)
-		{
-			public void onDrawerClosed(View view) {
-				super.onDrawerClosed(view);
-				toolbar.setTitle(mTitle);
-				invalidateOptionsMenu();
-				syncState();
-			}
+			{
+				public void onDrawerClosed(View view) {
+					super.onDrawerClosed(view);
+					toolbar.setTitle(mTitle);
+					invalidateOptionsMenu();
+					syncState();
+				}
 
-			public void onDrawerOpened(View drawerView) {
-				super.onDrawerOpened(drawerView);
-				toolbar.setTitle(mDrawerTitle);
-				invalidateOptionsMenu();
-				syncState();
-			}
-		};
+				public void onDrawerOpened(View drawerView) {
+					super.onDrawerOpened(drawerView);
+					toolbar.setTitle(mDrawerTitle);
+					invalidateOptionsMenu();
+					syncState();
+				}
+			};
 
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
@@ -105,11 +110,11 @@ public class DrawActivity extends ActionBarActivity {
 		mDrawerListView = (ListView) findViewById(R.id.nav_list);
 
 		mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				onDrawerItemSelected(position);
-			}
-		});
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+					onDrawerItemSelected(position);
+				}
+			});
 	
 		DrawerAdapter adapter = new DrawerAdapter(getApplicationContext());
 		// if change order change also final int drawer_item_*_pos 
@@ -293,11 +298,11 @@ public class DrawActivity extends ActionBarActivity {
 			//~ case DRAWER_HEADER_PROJECT_POS:
 			case DRAWER_ITEM_SAVE_POS:
 				Log.w("DrawActivity","onDrawerItemSelected DRAWER_ITEM_SAVE_POS not yet implemented");
-				Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+				Toast.makeText(this,"Prochainement",Toast.LENGTH_SHORT).show();
 				break;
 			case DRAWER_ITEM_SAVE_AS_POS:
 				Log.w("DrawActivity","onDrawerItemSelected DRAWER_ITEM_SAVE_AS_POS not yet implemented");
-				Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+				Toast.makeText(this,"Prochainement",Toast.LENGTH_SHORT).show();
 				break;
 			case DRAWER_ITEM_SHARE_POS:
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
@@ -349,7 +354,7 @@ public class DrawActivity extends ActionBarActivity {
         FloatingActionButton buttonEraser = (FloatingActionButton) findViewById(R.id.floating_button_eraser);
         FloatingActionButton buttonLine = (FloatingActionButton) findViewById(R.id.floating_button_line);
 
-        buttonPen.setColorNormalResId(R.color.black_semi_transparent);
+        buttonPen.setColorNormalResId(R.color.custom_primary);
         buttonEraser.setColorNormalResId(R.color.white);
         buttonLine.setColorNormalResId(R.color.white);
 
@@ -364,7 +369,7 @@ public class DrawActivity extends ActionBarActivity {
 	public void onClickFloatingToolLine(View v) {
         //mDrawZone.setCurrentTool(DrawZone.TOOL_LINE);
 		Log.w("DrawActivity","onClickFloatingToolLine not yet implemented");
-		Toast.makeText(this,"Not yet implemented",Toast.LENGTH_SHORT).show();
+		Toast.makeText(this,"Prochainement",Toast.LENGTH_SHORT).show();
 	}
 	
 	public void onClickFloatingToolEraser(View v) {
@@ -375,7 +380,7 @@ public class DrawActivity extends ActionBarActivity {
         FloatingActionButton buttonLine = (FloatingActionButton) findViewById(R.id.floating_button_line);
 
         buttonPen.setColorNormalResId(R.color.white);
-        buttonEraser.setColorNormalResId(R.color.black_semi_transparent);
+        buttonEraser.setColorNormalResId(R.color.custom_primary);
         buttonLine.setColorNormalResId(R.color.white);
 
         // Click action
@@ -384,5 +389,18 @@ public class DrawActivity extends ActionBarActivity {
         // Collapse menu (not automatic)
         FloatingActionsMenu floatingMenu = (FloatingActionsMenu) findViewById(R.id.floating_menu);
         floatingMenu.collapse();
+	}
+	
+	
+	@Override
+	public void onBackPressed() {
+		// close activity only if back press two time in less than 2 sec
+		long currentTime = Calendar.getInstance().getTimeInMillis();
+		if(currentTime - this.lastBackPress < 2000) {
+			super.onBackPressed();
+		} else {
+			Toast.makeText(this,"Appuyez une autre fois pour quitter.",Toast.LENGTH_SHORT).show();
+			this.lastBackPress = currentTime;
+		}
 	}
 }

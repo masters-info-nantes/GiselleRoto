@@ -6,7 +6,7 @@
 		<item name="android:colorPrimaryDark">@color/custom_primary_dark</item>
 		<item name="android:windowBackground">@color/material_white</item>
 		<item name="android:colorAccent">@color/custom_accent</item>
-		<item name="android:textColorPrimary">@color/custom_primary_text</item>
+		<item name="android:textColor">@color/custom_primary_text</item>
 		<item name="android:divider">@color/custom_divider</item>
 		
 		<item name="android:windowNoTitle">true</item>
@@ -21,6 +21,6 @@
 
 	<style name="menu_labels_style">
 		<item name="android:background">@drawable/fab_label_background</item>
-		<item name="android:textColor">@color/white</item>
+		<item name="android:textColor">@color/material_white</item>
 	</style>
 </resources>
